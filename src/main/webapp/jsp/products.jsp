@@ -14,17 +14,19 @@
 <body>
 
 	<header>
-		<nav class="navbar navbar-expand-md navbar-dark"
+		<nav class="navbar navbar-expand-md navbar-dark justify-content-between"
 			style="background-color: tomato">
-			<div>
-				<a href="" class="navbar-brand"> Product
-					CRUD App </a>
+			<div class="d-flex">
+				<a href="" class="navbar-brand"> Product CRUD App </a>
+				<ul class="navbar-nav">
+					<li>
+						<a href="<%=request.getContextPath()%>/products" class="nav-link">Products</a>
+					</li>
+				</ul>
 			</div>
-
-			<ul class="navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/products"
-					class="nav-link">Products</a></li>
-			</ul>
+			<div>
+				<a href="/logout" type="button" class="btn btn-light">Logout</a>
+			</div>
 		</nav>
 	</header>
 	<br>
@@ -35,7 +37,7 @@
 		<div class="container">
 			<h3 class="text-center">Product List</h3> 
 			<hr>
-			<security:authorize access="isAuthenticated()">		
+			<security:authorize access="hasRole('ADMIN')">		
 				<div class="container text-left">
 	
 					<a href="<%=request.getContextPath()%>/products/new" class="btn btn-success">Add
