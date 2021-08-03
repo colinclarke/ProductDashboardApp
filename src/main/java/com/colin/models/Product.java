@@ -21,8 +21,8 @@ public class Product {
 	private long id;
 	@NotBlank(message = "Product name is mandatory")
 	private String name;
-	@Positive
+	@Positive(message = "Product quantity must be a positive integer")
 	private int quantity;
-	@Positive
+	@Positive(message = "Product price must be greater than zero")
 	private double price;
 }

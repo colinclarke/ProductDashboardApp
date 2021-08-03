@@ -6,22 +6,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>New Product</title>
+<title>Add or edit a product</title>
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="/css/error.css" rel="stylesheet">
 </head>
 <body>
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark"
 			style="background-color: tomato">
 			<div>
-				<a href="<%=request.getContextPath()%>/products" class="navbar-brand"> Product CRUD App </a>
+				<a href="/products" class="navbar-brand"> Product CRUD App </a>
 			</div>
 
 			<ul class="navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/products" class="nav-link">Products</a></li>
+				<li><a href="/products" class="nav-link">Products</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -46,27 +45,32 @@
 					</c:if>
 					
 					<fieldset class="form-group">
-						<label>Product Name</label> <form:input type="text"
+						<label>Product Name</label>
+						<form:input type="text"
 							value="${product.name}" class="form-control"
 							name="name" path="name" required="required"/>
 						<form:errors path="name" cssClass="error" />
 					</fieldset>
 					
 					<fieldset class="form-group">
-						<label>Product Quantity</label> <input type="text"
+						<label>Product Quantity</label>
+						<input type="text"
 							value="${product.quantity == 0 ? null : product.quantity}" class="form-control"
-							name="quantity">
+							name="quantity" required="required">
 						<form:errors path="quantity" cssClass="error" />
 					</fieldset>
 					
 					<fieldset class="form-group">
-						<label>Product Price</label> <input type="text"
+						<label>Product Price</label>
+						<input type="text"
 							value="${product.price == 0 ? null : product.price}" class="form-control"
-							name="price">
-						<form:errors path="quantity" cssClass="error" />
+							name="price" required="required">
+						<form:errors path="price" cssClass="error" />
 					</fieldset>
-					
-					<input type="submit" class="btn btn-success" value="Save"/>
+					<div class="d-flex justify-content-around">
+						<input type="submit" class="btn btn-success" value="Save"/>
+						<a href="/products" class="btn btn-danger">Cancel</a>
+					</div>
 				</form:form>
 				
 			</div>

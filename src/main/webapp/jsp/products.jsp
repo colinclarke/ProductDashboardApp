@@ -7,9 +7,7 @@
 <head>
 <title>Product Management Application</title>
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -17,10 +15,10 @@
 		<nav class="navbar navbar-expand-md navbar-dark justify-content-between"
 			style="background-color: tomato">
 			<div class="d-flex">
-				<a href="" class="navbar-brand"> Product CRUD App </a>
+				<a href="/products" class="navbar-brand"> Product CRUD App </a>
 				<ul class="navbar-nav">
 					<li>
-						<a href="<%=request.getContextPath()%>/products" class="nav-link">Products</a>
+						<a href="/products" class="nav-link">Products</a>
 					</li>
 				</ul>
 			</div>
@@ -30,6 +28,13 @@
 		</nav>
 	</header>
 	<br>
+	<c:if test="${alertMessage != null}">
+		<div class=container>
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			  <div class="text-center"><strong>Notice: </strong>${alertMessage}</div>
+			</div>
+		</div>
+	</c:if>
 
 	<div class="row">
 		<!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
