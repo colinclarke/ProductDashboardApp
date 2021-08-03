@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductControllerAspect {
 
-	@Before(value = "execution(* com.colin.service.ProductService.*(..))")
+	@Before(value = "execution(* com.colin.controller.ProductController.*(..))")
 	public void beforeAdvice(JoinPoint joinPoint) {
 		System.out.println("Method: " + joinPoint.getSignature());
 		for (Object o : joinPoint.getArgs()) {
@@ -18,7 +18,7 @@ public class ProductControllerAspect {
 		}
 	}
 
-	@AfterReturning(value = "execution(* com.colin.service.ProductService.*(..))", returning = "returnValue")
+	@AfterReturning(value = "execution(* com.colin.controller.ProductController.*(..))", returning = "returnValue")
 	public void afterAdvice(JoinPoint joinPoint, Object returnValue) {
 		System.out.println("Returns: " + returnValue);
 	}
