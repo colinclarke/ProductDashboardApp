@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +22,12 @@
 			</p>
 			<div class="d-flex justify-content-around">
 				<a href="/products" class="btn btn-primary">Go to dashboard</a>
-				<a href="/login" class="btn btn-primary">Login</a>
+				<security:authorize access="!isAuthenticated()">
+				  <a href="/login" class="btn btn-primary">Login</a>
+				</security:authorize>
+				<security:authorize access="isAuthenticated()">
+				  <a href="/logout" class="btn btn-primary">Logout</a>
+				</security:authorize>
 			</div>
 		</div>
 	</div>

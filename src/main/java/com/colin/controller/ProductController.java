@@ -3,7 +3,7 @@ package com.colin.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
@@ -74,8 +74,9 @@ public class ProductController {
 			return "product-form";
 		}
 		double oldPrice = productService.getById(product.getId()).orElse(null).getPrice();
-		boolean isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities()
-				.contains(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		boolean isAdmin = auth != null
+				&& auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ADMIN"));
 		if (!isAdmin && oldPrice != product.getPrice()) {
 			bindingResult.rejectValue("price", "error.product", "Only admins can edit the price");
 			return "product-form";
