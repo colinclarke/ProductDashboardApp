@@ -25,4 +25,7 @@ public class Product {
 	private int quantity;
 	@Positive(message = "Product price must be greater than zero")
 	private double price;
+//	@ManyToOne()
+//	@JoinColumn(name = "CATEGORY_ID", nullable = false)
+//	private Category category;
 }

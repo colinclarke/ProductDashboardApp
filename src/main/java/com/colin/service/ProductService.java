@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.colin.models.Product;
@@ -22,6 +24,14 @@ public class ProductService {
 		return list;
 	}
 
+	public double getTotalPriceOfAllProducts() {
+		double total = 0;
+		for (Product p : productRepository.findAll()) {
+			total += p.getPrice() * p.getQuantity();
+		}
+		return total;
+	}
+
 	public void createProduct(Product product) {
 		productRepository.save(product);
 	}
@@ -36,6 +46,21 @@ public class ProductService {
 
 	public void deleteProduct(long id) {
 		productRepository.delete(getById(id).orElse(null));
+	}
+
+	public boolean isAdmin() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		return auth != null && auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+	}
+
+	public boolean priceChanged(Product product) {
+		double oldPrice = getById(product.getId()).orElse(null).getPrice();
+		return oldPrice != product.getPrice();
+	}
+
+	public boolean nameChanged(Product product) {
+		String oldName = getById(product.getId()).orElse(null).getName();
+		return !oldName.equals(product.getName());
 	}
 
 }

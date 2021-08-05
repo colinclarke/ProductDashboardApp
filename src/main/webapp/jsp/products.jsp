@@ -1,3 +1,4 @@
+<%@page import="com.colin.models.Product"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -45,7 +46,7 @@
 			<security:authorize access="hasRole('ADMIN')">		
 				<div class="container text-left">
 	
-					<a href="<%=request.getContextPath()%>/products/new" class="btn btn-success">Add
+					<a href="/products/new" class="btn btn-success">Add
 						New Product</a>
 				</div>
 			</security:authorize>
@@ -62,7 +63,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<!--   for (Todo todo: todos) {  -->
+
 					<c:forEach var="product" items="${productList}">
 
 						<tr>
@@ -71,12 +72,24 @@
 							<td>${product.quantity}</td>
 							<td>$${String.format("%.2f",product.price)}</td>
 							<td>$${String.format("%.2f",product.quantity * product.price)}</td>
-							<td><a href="/products/edit/${product.id}">Edit</a>
-								&nbsp;&nbsp;&nbsp;&nbsp; <a
-								href="/products/delete/${product.id}">Delete</a></td>
+							<td>
+								<a href="/products/edit/${product.id}" class="btn btn-secondary">Edit</a>
+								<security:authorize access="hasRole('ADMIN')">
+									<a href="/products/delete/${product.id}" class="btn btn-danger">Delete</a>
+								</security:authorize>
+							</td>
 						</tr>
 					</c:forEach>
-					<!-- } -->
+					
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>$${String.format("%.2f", total)}</td>
+						<td></td>
+					</tr>
+					
 				</tbody>
 
 			</table>

@@ -67,6 +67,9 @@
 							name="price" required="required">
 						<form:errors path="price" cssClass="error" />
 					</fieldset>
+					
+					
+					
 					<div class="d-flex justify-content-around">
 						<a href="/products" class="btn btn-danger">Cancel</a>
 						<input type="submit" class="btn btn-success" value="Save"/>

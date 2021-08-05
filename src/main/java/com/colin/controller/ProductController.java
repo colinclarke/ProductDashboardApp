@@ -3,9 +3,6 @@ package com.colin.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -24,14 +21,12 @@ import com.colin.service.ProductService;
 public class ProductController {
 
 	@Autowired
-	ProductService productService;
-
-	@Autowired
-	UserDetailsService userDetailsService;
+	private ProductService productService;
 
 	@GetMapping("")
 	public ModelAndView listAllProducts(ModelAndView mav) {
 		mav.addObject("productList", productService.getAllProducts());
+		mav.addObject("total", productService.getTotalPriceOfAllProducts());
 		mav.setViewName("products");
 		return mav;
 	}
@@ -73,12 +68,15 @@ public class ProductController {
 		if (bindingResult.hasErrors()) {
 			return "product-form";
 		}
-		double oldPrice = productService.getById(product.getId()).orElse(null).getPrice();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		boolean isAdmin = auth != null
-				&& auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ADMIN"));
-		if (!isAdmin && oldPrice != product.getPrice()) {
-			bindingResult.rejectValue("price", "error.product", "Only admins can edit the price");
+		boolean priceChanged = productService.priceChanged(product);
+		boolean nameChanged = productService.nameChanged(product);
+		if (!productService.isAdmin() && (priceChanged || nameChanged)) {
+			if (priceChanged) {
+				bindingResult.rejectValue("price", "error.product", "Only admins can edit the price");
+			}
+			if (nameChanged) {
+				bindingResult.rejectValue("name", "error.product", "Only admins can edit the name");
+			}
 			return "product-form";
 		}
 		productService.updateProduct(product);
