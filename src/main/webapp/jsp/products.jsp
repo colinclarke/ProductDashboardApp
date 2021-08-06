@@ -59,7 +59,7 @@
 						<th>Category</th>
 						<th>Quantity</th>
 						<th>Price</th>
-						<th>Total</th>
+						<th>Subtotal</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -82,15 +82,15 @@
 							</td>
 						</tr>
 					</c:forEach>
+				</tbody>
+			</table>
+			
+			<table align="right">
+				<tbody style="font-size:40px; color:blue;">
 					
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>$${String.format("%.2f", total)}</td>
+						<td>Total: </td>
+						<td>$${String.format("%.2f", total*1.06)}</td>
 					</tr>
 					
 				</tbody>
