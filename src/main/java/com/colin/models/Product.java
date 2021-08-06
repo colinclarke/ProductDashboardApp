@@ -28,4 +28,7 @@ public class Product {
 //	@ManyToOne()
 //	@JoinColumn(name = "CATEGORY_ID", nullable = false)
 //	private Category category;
+	
+	
+	
 }
