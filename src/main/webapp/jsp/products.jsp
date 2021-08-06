@@ -56,6 +56,7 @@
 					<tr>
 						<th>ID</th>
 						<th>Name</th>
+						<th>Category</th>
 						<th>Quantity</th>
 						<th>Price</th>
 						<th>Total</th>
@@ -69,6 +70,7 @@
 						<tr>
 							<td>${product.id}</td>
 							<td>${product.name}</td>
+							<td>${product.category}</td>
 							<td>${product.quantity}</td>
 							<td>$${String.format("%.2f",product.price)}</td>
 							<td>$${String.format("%.2f",product.quantity * product.price)}</td>
@@ -82,6 +84,7 @@
 					</c:forEach>
 					
 					<tr>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>

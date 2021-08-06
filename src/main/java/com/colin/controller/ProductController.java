@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.colin.models.Category;
 import com.colin.models.Product;
+import com.colin.models.ProductCategory;
+import com.colin.repo.CategoryRepository;
 import com.colin.service.ProductService;
 
 @Controller
@@ -22,6 +25,9 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+
+	@Autowired
+	private CategoryRepository categoryRepository;
 
 	@GetMapping("")
 	public ModelAndView listAllProducts(ModelAndView mav) {
@@ -33,19 +39,22 @@ public class ProductController {
 
 	@GetMapping("/new")
 	public ModelAndView addNewProduct(ModelAndView mav) {
-		mav.addObject("product", new Product());
+		mav.addObject("pc", new ProductCategory());
 		mav.setViewName("product-form");
 		return mav;
 	}
 
 	@PostMapping("/new")
-	public String addNewProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+	public String addNewProduct(@Valid @ModelAttribute("pc") ProductCategory pc, BindingResult bindingResult,
 			ModelMap model) {
 		if (bindingResult.hasErrors()) {
 			model.put("product", new Product());
 			return "product-form";
 		}
-		productService.createProduct(product);
+		Category category = categoryRepository.findByName(pc.getCategory().getName()).orElse(pc.getCategory());
+		pc.getProduct().setCategory(category);
+		category.addProduct(pc.getProduct());
+		categoryRepository.save(category);
 		return "redirect:/products";
 	}
 
@@ -59,26 +68,34 @@ public class ProductController {
 			return mav;
 		}
 		mav.addObject("product", product);
+		mav.addObject("pc", new ProductCategory(product, product.getCategory()));
 		mav.setViewName("product-form");
 		return mav;
 	}
 
 	@PostMapping("/edit/{id}")
-	public String editProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
+	public String editProduct(@Valid @ModelAttribute("pc") ProductCategory pc, BindingResult bindingResult,
+			ModelMap map) {
 		if (bindingResult.hasErrors()) {
 			return "product-form";
 		}
+		Product product = pc.getProduct();
+		Category category = categoryRepository.findByName(pc.getCategory().getName()).orElse(pc.getCategory());
+		product.setCategory(category);
 		boolean priceChanged = productService.priceChanged(product);
 		boolean nameChanged = productService.nameChanged(product);
 		if (!productService.isAdmin() && (priceChanged || nameChanged)) {
 			if (priceChanged) {
-				bindingResult.rejectValue("price", "error.product", "Only admins can edit the price");
+				bindingResult.rejectValue("product.price", "error.product", "Only admins can edit the price");
 			}
 			if (nameChanged) {
-				bindingResult.rejectValue("name", "error.product", "Only admins can edit the name");
+				bindingResult.rejectValue("product.name", "error.product", "Only admins can edit the name");
 			}
+			map.put("product", product);
+			map.put("pc", pc);
 			return "product-form";
 		}
+		categoryRepository.save(category);
 		productService.updateProduct(product);
 		return "redirect:/products";
 	}
