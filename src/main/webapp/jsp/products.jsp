@@ -82,6 +82,15 @@
 							</td>
 						</tr>
 					</c:forEach>
+					
+					<tr>
+						<td>Subtotal: </td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>$${String.format("%.2f", total)}</td>
+					</tr>
 				</tbody>
 			</table>
 			
