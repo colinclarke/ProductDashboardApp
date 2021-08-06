@@ -30,42 +30,56 @@
 		<div class="card">
 			<div class="card-body">
 			
-				<form:form method="POST" modelAttribute="product">
-				<h2>
-					<c:if test="${product.name != null}">
-            			Edit Product
-            		</c:if>
-					<c:if test="${product.name == null}">
-            			Add New Product
-            		</c:if>
-				</h2>
+				<form:form method="POST" modelAttribute="pc">
+					<h2>
+						<c:if test="${product.name != null}">
+	            			Edit Product
+	            		</c:if>
+						<c:if test="${product.name == null}">
+	            			Add New Product
+	            		</c:if>
+					</h2>
 					<%-- <form:errors path="*" element="div" cssClass="errors" /> --%>
 					<c:if test="${product.name != null}">
-						Product ID: ${product.id}<br>
+						<fieldset class="form-group">
+							<label>Product ID</label>
+							<form:input type="text"
+								readonly="true" class="form-control"
+								name="id" path="product.id" required="required"/>
+							<form:errors path="product.id" cssClass="error" />
+						</fieldset>
 					</c:if>
 					
 					<fieldset class="form-group">
 						<label>Product Name</label>
 						<form:input type="text"
 							value="${product.name}" class="form-control"
-							name="name" path="name" required="required"/>
-						<form:errors path="name" cssClass="error" />
+							name="name" path="product.name" required="required"/>
+						<form:errors path="product.name" cssClass="error" />
 					</fieldset>
 					
 					<fieldset class="form-group">
 						<label>Product Quantity</label>
-						<input type="text"
+						<form:input type="text"
 							value="${product.quantity == 0 ? null : product.quantity}" class="form-control"
-							name="quantity" required="required">
-						<form:errors path="quantity" cssClass="error" />
+							name="quantity" path="product.quantity" required="required" />
+						<form:errors path="product.quantity" cssClass="error" />
 					</fieldset>
 					
 					<fieldset class="form-group">
 						<label>Product Price</label>
-						<input type="text"
+						<form:input type="text"
 							value="${product.price == 0 ? null : product.price}" class="form-control"
-							name="price" required="required">
-						<form:errors path="price" cssClass="error" />
+							name="price" path="product.price" required="required" />
+						<form:errors path="product.price" cssClass="error" />
+					</fieldset>
+					
+					<fieldset class="form-group">
+						<label>Product Category</label>
+						<form:input type="text"
+							value="" class="form-control"
+							name="category" path="category.name" required="required" />
+						<form:errors path="category.name" cssClass="error" />
 					</fieldset>
 					
 					
