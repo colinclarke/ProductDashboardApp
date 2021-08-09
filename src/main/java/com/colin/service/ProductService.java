@@ -35,6 +35,31 @@ public class ProductService {
 		}
 		return total;
 	}
+	
+	
+	public List<Product> getSearchedProduct(String category) {
+		List<Product> products = new ArrayList<>();
+		List<Product> productSearch = new ArrayList<>();
+		productRepository.findAll().forEach(products::add);
+		products.stream()
+		.filter(p -> p.getCategory().getName().equalsIgnoreCase(category))
+		.forEach(productSearch::add);
+		return productSearch;
+	}
+	
+	public double getSearchedProductTotal(String category) {
+		double total = 0;
+		List<Product> products = new ArrayList<>();
+		List<Product> productSearch = new ArrayList<>();
+		productRepository.findAll().forEach(products::add);
+		products.stream()
+		.filter(p -> p.getCategory().getName().equalsIgnoreCase(category))
+		.forEach(productSearch::add);
+		for (Product pr : productSearch) {
+			total += pr.getPrice() * pr.getQuantity();
+		}
+		return total;
+	}
 
 	public void createProduct(Product product) {
 		productRepository.save(product);
