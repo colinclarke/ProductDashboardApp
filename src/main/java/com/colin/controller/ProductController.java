@@ -1,5 +1,8 @@
 package com.colin.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.colin.models.Category;
 import com.colin.models.Product;
@@ -31,9 +35,28 @@ public class ProductController {
 
 	@GetMapping("")
 	public ModelAndView listAllProducts(ModelAndView mav) {
+		List<Category> c = new ArrayList<>();
+		categoryRepository.findAll().forEach(c::add);
+		mav.addObject("categories", c);
 		mav.addObject("productList", productService.getAllProducts());
 		mav.addObject("total", productService.getTotalPriceOfAllProducts());
+		mav.addObject("search", false);
 		mav.setViewName("products");
+		return mav;
+	}
+	
+	@PostMapping("")
+	public ModelAndView searchProducts(@RequestParam String searchKey, ModelAndView mav) {
+		List<Category> c = new ArrayList<>();
+		categoryRepository.findAll().forEach(c::add);
+		
+		
+		List<Product> sp = productService.getSearchedProduct(searchKey);
+		mav.addObject("searched", sp);
+		mav.addObject("total", productService.getSearchedProductTotal(searchKey));
+		mav.addObject("search", true);
+		mav.setViewName("products");
+		
 		return mav;
 	}
 
@@ -46,9 +69,8 @@ public class ProductController {
 
 	@PostMapping("/new")
 	public String addNewProduct(@Valid @ModelAttribute("pc") ProductCategory pc, BindingResult bindingResult,
-			ModelMap model) {
-		if (bindingResult.hasErrors()) {
-			model.put("product", new Product());
+			ModelMap map) {
+		if (productService.setBindingsIfInvalid(pc, bindingResult, map)) {
 			return "product-form";
 		}
 		Category category = categoryRepository.findByName(pc.getCategory().getName()).orElse(pc.getCategory());
@@ -76,25 +98,12 @@ public class ProductController {
 	@PostMapping("/edit/{id}")
 	public String editProduct(@Valid @ModelAttribute("pc") ProductCategory pc, BindingResult bindingResult,
 			ModelMap map) {
-		if (bindingResult.hasErrors()) {
+		if (productService.setBindingsIfInvalid(pc, bindingResult, map)) {
 			return "product-form";
 		}
 		Product product = pc.getProduct();
 		Category category = categoryRepository.findByName(pc.getCategory().getName()).orElse(pc.getCategory());
 		product.setCategory(category);
-		boolean priceChanged = productService.priceChanged(product);
-		boolean nameChanged = productService.nameChanged(product);
-		if (!productService.isAdmin() && (priceChanged || nameChanged)) {
-			if (priceChanged) {
-				bindingResult.rejectValue("product.price", "error.product", "Only admins can edit the price");
-			}
-			if (nameChanged) {
-				bindingResult.rejectValue("product.name", "error.product", "Only admins can edit the name");
-			}
-			map.put("product", product);
-			map.put("pc", pc);
-			return "product-form";
-		}
 		categoryRepository.save(category);
 		productService.updateProduct(product);
 		return "redirect:/products";

@@ -32,15 +32,15 @@
 			
 				<form:form method="POST" modelAttribute="pc">
 					<h2>
-						<c:if test="${product.name != null}">
+						<c:if test="${product.id != 0 && product.id != null}">
 	            			Edit Product
 	            		</c:if>
-						<c:if test="${product.name == null}">
+						<c:if test="${product.id == 0 || product.id == null}">
 	            			Add New Product
 	            		</c:if>
 					</h2>
 					<%-- <form:errors path="*" element="div" cssClass="errors" /> --%>
-					<c:if test="${product.name != null}">
+					<c:if test="${product.id != 0 && product.id != null}">
 						<fieldset class="form-group">
 							<label>Product ID</label>
 							<form:input type="text"
