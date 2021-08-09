@@ -46,9 +46,8 @@ public class ProductController {
 
 	@PostMapping("/new")
 	public String addNewProduct(@Valid @ModelAttribute("pc") ProductCategory pc, BindingResult bindingResult,
-			ModelMap model) {
-		if (bindingResult.hasErrors()) {
-			model.put("product", new Product());
+			ModelMap map) {
+		if (productService.setBindingsIfInvalid(pc, bindingResult, map)) {
 			return "product-form";
 		}
 		Category category = categoryRepository.findByName(pc.getCategory().getName()).orElse(pc.getCategory());
@@ -76,25 +75,12 @@ public class ProductController {
 	@PostMapping("/edit/{id}")
 	public String editProduct(@Valid @ModelAttribute("pc") ProductCategory pc, BindingResult bindingResult,
 			ModelMap map) {
-		if (bindingResult.hasErrors()) {
+		if (productService.setBindingsIfInvalid(pc, bindingResult, map)) {
 			return "product-form";
 		}
 		Product product = pc.getProduct();
 		Category category = categoryRepository.findByName(pc.getCategory().getName()).orElse(pc.getCategory());
 		product.setCategory(category);
-		boolean priceChanged = productService.priceChanged(product);
-		boolean nameChanged = productService.nameChanged(product);
-		if (!productService.isAdmin() && (priceChanged || nameChanged)) {
-			if (priceChanged) {
-				bindingResult.rejectValue("product.price", "error.product", "Only admins can edit the price");
-			}
-			if (nameChanged) {
-				bindingResult.rejectValue("product.name", "error.product", "Only admins can edit the name");
-			}
-			map.put("product", product);
-			map.put("pc", pc);
-			return "product-form";
-		}
 		categoryRepository.save(category);
 		productService.updateProduct(product);
 		return "redirect:/products";
