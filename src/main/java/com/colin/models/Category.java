@@ -27,8 +27,8 @@ public class Category {
 
 	@Id
 	@Column(name = "CATEGORY_ID")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "category_generator")
-	@SequenceGenerator(name = "category_generator", sequenceName = "category_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_generator")
+	@SequenceGenerator(name = "category_generator", sequenceName = "category_seq", initialValue = 1)
 	private long id;
 	@NotBlank(message = "Each product must have a category")
 	private String name;
