@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +38,14 @@
 							name="password" required="required"/>
 					</fieldset>
 					
+					<fieldset class="form-group">
+					<security:authorize access="hasRole('ADMIN')">	
+					<select class="form-control" name = "role">
+							<option selected value = "ROLE_USER">User</option>
+							<option value = "ROLE_ADMIN">Admin</option>
+						</select>
+					</security:authorize>
+					</fieldset>
 					
 					<div class="d-flex justify-content-around">
 						<a href="/landing-page" class="btn btn-danger">Cancel</a>

@@ -28,9 +28,7 @@
 				<security:authorize access="isAuthenticated()">
 				  <a href="/logout" class="btn btn-primary">Logout</a>
 				</security:authorize>
-				<security:authorize access="!isAuthenticated()">
 				<a href = "/create-new-user" class="btn btn-primary">Create new user</a>
-				</security:authorize>
 			</div>
 		</div>
 	</div>
