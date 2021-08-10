@@ -26,18 +26,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return new MyUserDetails(user);
 	}
 	
-	public void createNewUser(String name, String password) {
-		User u = new User();
-		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
-		u.setUsername(name);
-		String encryptP = b.encode(password);
-		u.setPassword(encryptP);
-		u.setRole("ROLE_USER");
-		u.setEnabled(true);
-		
-		userRepository.save(u);
-	}
-	
 	public void createNewUser(String name, String password, String role) {
 		User u = new User();
 		u.setUsername(name);

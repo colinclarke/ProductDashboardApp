@@ -25,14 +25,6 @@ public class LandingPageController {
 		return "create-new-user";
 	}
 	
-	/*@PostMapping("/create-new-user")
-	public String createNewUser(@RequestParam String name, @RequestParam String password) {
-		
-		userDetails.createNewUser(name, password);
-		
-		return "redirect:/products";
-	}*/
-	
 	@PostMapping("/create-new-user")
 	public String createNewUser(@RequestParam String name, @RequestParam String password, @RequestParam (defaultValue = "ROLE_USER") String role) {
 		userDetails.createNewUser(name, password, role);
