@@ -17,7 +17,7 @@
 		<nav class="navbar navbar-expand-md navbar-dark justify-content-between"
 			style="background-color: tomato">
 			<div class="d-flex">
-				<a href="/products" class="navbar-brand"> Product CRUD App </a>
+				<a href="/" class="navbar-brand"> Product CRUD App </a>
 				<ul class="navbar-nav">
 					<li>
 						<a href="/products" class="nav-link">Products</a>

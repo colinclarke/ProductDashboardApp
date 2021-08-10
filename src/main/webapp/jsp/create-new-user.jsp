@@ -49,7 +49,7 @@
 					</security:authorize>
 					
 					<div class="d-flex justify-content-around">
-						<a href="/landing-page" class="btn btn-danger">Cancel</a>
+						<a href="/" class="btn btn-danger">Cancel</a>
 						<input type="submit" class="btn btn-success" value="Save"/>
 					</div>
 				</form:form>

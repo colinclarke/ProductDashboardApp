@@ -1,6 +1,5 @@
 package com.colin.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -37,7 +36,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
 		String encryptP = b.encode(password);
 		u.setPassword(encryptP);
-		System.out.println(role);
 
 		if (role.equals("ROLE_USER")) {
 			u.addRole(roleRepository.getRoleByName(role));
@@ -45,8 +43,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 			String[] options;
 			options = role.split(",");
-			
-			for (String s: options) {
+
+			for (String s : options) {
 				u.addRole(roleRepository.getRoleByName(s));
 			}
 		}
