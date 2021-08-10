@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.colin.models.User;
+import com.colin.repo.RoleRepository;
 import com.colin.repo.UserRepository;
 import com.colin.security.MyUserDetails;
 
@@ -16,6 +17,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	private RoleRepository roleRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -32,9 +35,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
 		String encryptP = b.encode(password);
 		u.setPassword(encryptP);
-		u.setRole(role);
+		u.addRole(roleRepository.getRoleByName(role));
 		u.setEnabled(true);
-		
+
 		userRepository.save(u);
 	}
 
