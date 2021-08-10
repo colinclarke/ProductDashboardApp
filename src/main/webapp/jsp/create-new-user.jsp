@@ -38,14 +38,15 @@
 							name="password" required="required"/>
 					</fieldset>
 					
+					
 					<fieldset class="form-group">
 					<security:authorize access="hasRole('ADMIN')">	
-					<select class="form-control" name = "role">
-							<option selected value = "ROLE_USER">User</option>
-							<option value = "ROLE_ADMIN">Admin</option>
-						</select>
+					<c:forEach items = "${roles}" var="r">
+						<input type = "checkbox" name = "role" value = "${r.name}">
+						<label>${r.name}</label>
+							</c:forEach>
+					
 					</security:authorize>
-					</fieldset>
 					
 					<div class="d-flex justify-content-around">
 						<a href="/landing-page" class="btn btn-danger">Cancel</a>
