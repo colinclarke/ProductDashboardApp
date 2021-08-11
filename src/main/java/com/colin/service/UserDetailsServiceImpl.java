@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.colin.models.User;
+import com.colin.repo.RoleRepository;
 import com.colin.repo.UserRepository;
 import com.colin.security.MyUserDetails;
 
@@ -17,6 +18,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private RoleRepository roleRepository;
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository.getUserByUsername(username);
@@ -25,16 +29,27 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		}
 		return new MyUserDetails(user);
 	}
-	
-	public void createNewUser(String name, String password) {
+
+	public void createNewUser(String name, String password, String role) {
 		User u = new User();
-		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
 		u.setUsername(name);
+		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
 		String encryptP = b.encode(password);
 		u.setPassword(encryptP);
-		u.setRole("ROLE_USER");
+
+		if (role.equals("ROLE_USER")) {
+			u.addRole(roleRepository.getRoleByName(role));
+		} else {
+
+			String[] options;
+			options = role.split(",");
+
+			for (String s : options) {
+				u.addRole(roleRepository.getRoleByName(s));
+			}
+		}
 		u.setEnabled(true);
-		
+
 		userRepository.save(u);
 	}
 
