@@ -82,7 +82,9 @@
 						<th>Quantity</th>
 						<th>Price</th>
 						<th>Subtotal</th>
+						<security:authorize access="hasAnyRole('ADMIN', 'USER')">
 						<th>Actions</th>
+						</security:authorize>
 					</tr>
 				</thead>
 				<tbody>
@@ -98,14 +100,17 @@
 							<td>$${String.format("%.2f",product.price)}</td>
 							<td>$${String.format("%.2f",product.quantity * product.price)}</td>
 							<td>
+								<security:authorize access="hasAnyRole('ADMIN', 'USER')">
 								<a href="/products/edit/${product.id}" class="btn btn-secondary">Edit</a>
 								<security:authorize access="hasRole('ADMIN')">
 									<a href="/products/delete/${product.id}" class="btn btn-danger">Delete</a>
 								</security:authorize>
+							</security:authorize>
 							</td>
 						</tr>
 					</c:forEach>
 					
+					<security:authorize access="hasRole('ACC')">
 						<tr>
 						<td>Subtotal: </td>
 						<td></td>
@@ -114,6 +119,8 @@
 						<td></td>
 						<td>$${String.format("%.2f", total)}</td>
 					</tr>
+					
+					
 					<table align="right">
 				<tbody style="font-size:40px; color:blue;">
 					
@@ -124,6 +131,7 @@
 					
 				</tbody>
 
+			</security:authorize>
 			</table>
 					</c:when>
 					<c:otherwise>
@@ -136,15 +144,17 @@
 							<td>$${String.format("%.2f",product.price)}</td>
 							<td>$${String.format("%.2f",product.quantity * product.price)}</td>
 							<td>
+								<security:authorize access="hasAnyRole('ADMIN', 'USER')">
 								<a href="/products/edit/${product.id}" class="btn btn-secondary">Edit</a>
 								<security:authorize access="hasRole('ADMIN')">
 									<a href="/products/delete/${product.id}" class="btn btn-danger">Delete</a>
 								</security:authorize>
+							</security:authorize>
 							</td>
 						</tr>
 						</c:forEach>
 					
-		
+		<security:authorize access="hasRole('ACC')">
 					
 					<tr>
 						<td>Subtotal: </td>
@@ -168,7 +178,7 @@
 				</tbody>
 
 			</table>
-			
+			</security:authorize>
 			<br>
 				<a href="/products" class="btn btn-danger">Back</a>
 			
