@@ -23,7 +23,7 @@ public class LandingPageController {
 	@Autowired
 	private RoleRepository roleRepository;
 
-	@GetMapping("")
+	@GetMapping("/")
 	public String getLandingPage() {
 		return "landing-page";
 	}
