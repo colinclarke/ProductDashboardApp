@@ -1,0 +1,121 @@
+2021-08-12 15:28:38,704 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SpringCrudApplication using Java 1.8.0_281 on LP-PF2VB15G with PID 18760 (C:\MyProjects\Spring\SpringCRUD\target\classes started by colin_clarke in C:\MyProjects\Spring\SpringCRUD)
+2021-08-12 15:28:38,707 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-08-12 15:28:38,707 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-08-12 15:28:38,734 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
+2021-08-12 15:28:38,778 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-08-12 15:28:38,779 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-08-12 15:28:40,072 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-08-12 15:28:40,150 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 67 ms. Found 4 JPA repository interfaces.
+2021-08-12 15:28:41,807 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8484 (http)
+2021-08-12 15:28:41,819 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8484"]
+2021-08-12 15:28:41,820 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-08-12 15:28:41,820 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-08-12 15:28:42,445 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-08-12 15:28:42,456 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-12 15:28:42,457 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 3677 ms
+2021-08-12 15:28:42,488 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2021-08-12 15:28:43,789 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2021-08-12 15:28:43,796 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/grocery_store'
+2021-08-12 15:28:43,899 WARN org.apache.juli.logging.DirectJDKLog [restartedMain] Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [5A0827DD0364D4057D94B52518C4B2F7]
+2021-08-12 15:28:44,049 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-08-12 15:28:44,110 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-08-12 15:28:44,273 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-08-12 15:28:44,421 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-08-12 15:28:45,497 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-08-12 15:28:45,517 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-08-12 15:28:46,198 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-08-12 15:28:46,798 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@26bc4206, org.springframework.security.web.context.SecurityContextPersistenceFilter@6f89715, org.springframework.security.web.header.HeaderWriterFilter@241f7535, org.springframework.security.web.csrf.CsrfFilter@21f33ef7, org.springframework.security.web.authentication.logout.LogoutFilter@152504ae, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2a2bb4ce, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@39ddab3b, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@317377bf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4af6a3f1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@18aa5f01, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@27c9f0b9, org.springframework.security.web.session.SessionManagementFilter@2c48943d, org.springframework.security.web.access.ExceptionTranslationFilter@262b1874, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@311d764b]
+2021-08-12 15:28:46,963 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-08-12 15:28:47,002 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [restartedMain] Adding welcome page: class path resource [static/index.html]
+2021-08-12 15:28:47,217 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8484"]
+2021-08-12 15:28:47,253 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8484 (http) with context path ''
+2021-08-12 15:28:47,260 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
+2021-08-12 15:28:47,282 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
+2021-08-12 15:28:47,290 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
+2021-08-12 15:28:47,482 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started SpringCrudApplication in 9.448 seconds (JVM running for 11.693)
+2021-08-12 15:28:58,121 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8484-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-12 15:28:58,121 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8484-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-08-12 15:28:58,123 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8484-exec-1] Completed initialization in 2 ms
+2021-08-12 15:29:03,469 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-5] Method: ModelAndView com.colin.controller.ProductController.listAllProducts(ModelAndView)
+2021-08-12 15:29:03,470 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-5] Argument: ModelAndView [view=[null]; model=null]
+2021-08-12 15:29:03,607 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-5] Returns: ModelAndView [view="products"; model={categories=[Fruit], productList=[Product(id=1, name=Apple, quantity=120, price=1.03, category=Fruit)], total=123.60000000000001, search=false}]
+2021-08-12 15:30:48,113 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SpringCrudApplication using Java 1.8.0_281 on LP-PF2VB15G with PID 5084 (C:\MyProjects\Spring\SpringCRUD\target\classes started by colin_clarke in C:\MyProjects\Spring\SpringCRUD)
+2021-08-12 15:30:48,120 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-08-12 15:30:48,121 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-08-12 15:30:48,147 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
+2021-08-12 15:30:48,199 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-08-12 15:30:48,199 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-08-12 15:30:49,593 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-08-12 15:30:49,668 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 64 ms. Found 4 JPA repository interfaces.
+2021-08-12 15:30:51,203 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8484 (http)
+2021-08-12 15:30:51,220 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8484"]
+2021-08-12 15:30:51,221 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-08-12 15:30:51,221 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-08-12 15:30:51,825 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-08-12 15:30:51,836 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-12 15:30:51,836 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 3636 ms
+2021-08-12 15:30:51,884 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2021-08-12 15:30:53,114 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2021-08-12 15:30:53,128 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/grocery_store'
+2021-08-12 15:30:53,320 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-08-12 15:30:53,375 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-08-12 15:30:53,509 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-08-12 15:30:53,657 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-08-12 15:30:54,728 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-08-12 15:30:54,747 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-08-12 15:30:55,299 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-08-12 15:30:55,874 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1beb962, org.springframework.security.web.context.SecurityContextPersistenceFilter@1fbadbc, org.springframework.security.web.header.HeaderWriterFilter@325a4b51, org.springframework.security.web.csrf.CsrfFilter@534efe0b, org.springframework.security.web.authentication.logout.LogoutFilter@20201100, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6fd6ae2f, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@3d8df6ad, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@46b4d51a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4be40a8f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3f00b934, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6dafb364, org.springframework.security.web.session.SessionManagementFilter@13431bd1, org.springframework.security.web.access.ExceptionTranslationFilter@368dba9a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3cad8e39]
+2021-08-12 15:30:56,042 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-08-12 15:30:56,084 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [restartedMain] Adding welcome page: class path resource [static/index.html]
+2021-08-12 15:30:56,267 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8484"]
+2021-08-12 15:30:56,298 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8484 (http) with context path ''
+2021-08-12 15:30:56,305 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
+2021-08-12 15:30:56,330 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
+2021-08-12 15:30:56,341 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
+2021-08-12 15:30:56,523 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started SpringCrudApplication in 9.17 seconds (JVM running for 11.484)
+2021-08-12 15:31:02,395 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8484-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-12 15:31:02,396 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8484-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-08-12 15:31:02,399 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8484-exec-1] Completed initialization in 3 ms
+2021-08-12 15:31:03,974 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-4] Method: ModelAndView com.colin.controller.ProductController.listAllProducts(ModelAndView)
+2021-08-12 15:31:03,975 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-4] Argument: ModelAndView [view=[null]; model=null]
+2021-08-12 15:31:04,100 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-4] Returns: ModelAndView [view="products"; model={categories=[Fruit], productList=[Product(id=1, name=Apple, quantity=120, price=1.03, category=Fruit)], total=123.60000000000001, search=false}]
+2021-08-12 15:32:53,100 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-08-12 15:32:53,109 INFO com.zaxxer.hikari.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
+2021-08-12 15:32:53,132 INFO com.zaxxer.hikari.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
+2021-08-12 15:32:53,467 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SpringCrudApplication using Java 1.8.0_281 on LP-PF2VB15G with PID 5084 (C:\MyProjects\Spring\SpringCRUD\target\classes started by colin_clarke in C:\MyProjects\Spring\SpringCRUD)
+2021-08-12 15:32:53,468 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-08-12 15:32:53,468 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-08-12 15:32:54,539 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-08-12 15:32:54,594 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 53 ms. Found 4 JPA repository interfaces.
+2021-08-12 15:32:55,397 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8484 (http)
+2021-08-12 15:32:55,398 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8484"]
+2021-08-12 15:32:55,399 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-08-12 15:32:55,399 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-08-12 15:32:55,958 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-08-12 15:32:55,971 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-08-12 15:32:55,971 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2499 ms
+2021-08-12 15:32:55,991 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2021-08-12 15:32:56,042 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2021-08-12 15:32:56,042 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/grocery_store'
+2021-08-12 15:32:56,076 WARN org.apache.juli.logging.DirectJDKLog [restartedMain] Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [32B0604595A56BA39C6B736B6D018718]
+2021-08-12 15:32:56,117 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-08-12 15:32:56,123 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-08-12 15:32:56,327 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-08-12 15:32:56,327 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-08-12 15:32:56,504 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-08-12 15:32:56,694 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6824012c, org.springframework.security.web.context.SecurityContextPersistenceFilter@3dcb1b6f, org.springframework.security.web.header.HeaderWriterFilter@116f4ca7, org.springframework.security.web.csrf.CsrfFilter@30d492b1, org.springframework.security.web.authentication.logout.LogoutFilter@70407e4a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@20e58572, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@41af1279, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6223fc34, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7124bd4c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a45cdbb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@146799d9, org.springframework.security.web.session.SessionManagementFilter@291e55e7, org.springframework.security.web.access.ExceptionTranslationFilter@72b7c298, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@186dcbf2]
+2021-08-12 15:32:56,744 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-08-12 15:32:56,749 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [restartedMain] Adding welcome page: class path resource [static/index.html]
+2021-08-12 15:32:56,816 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8484"]
+2021-08-12 15:32:56,832 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8484 (http) with context path ''
+2021-08-12 15:32:56,836 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
+2021-08-12 15:32:56,837 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
+2021-08-12 15:32:56,839 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
+2021-08-12 15:32:56,884 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started SpringCrudApplication in 3.515 seconds (JVM running for 131.844)
+2021-08-12 15:32:56,886 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2021-08-12 15:33:00,635 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8484-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-08-12 15:33:00,637 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8484-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-08-12 15:33:00,638 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8484-exec-1] Completed initialization in 1 ms
+2021-08-12 15:33:01,975 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-4] Method: ModelAndView com.colin.controller.ProductController.listAllProducts(ModelAndView)
+2021-08-12 15:33:01,976 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-4] Argument: ModelAndView [view=[null]; model=null]
+2021-08-12 15:33:02,021 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-4] Returns: ModelAndView [view="products"; model={categories=[Fruit], productList=[Product(id=1, name=Apple, quantity=120, price=1.03, category=Fruit)], total=123.60000000000001, search=false}]
