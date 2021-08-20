@@ -4,23 +4,27 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class ProductControllerAspect {
 
+	Logger logger = LoggerFactory.getLogger(ProductControllerAspect.class);
+
 	@Before(value = "execution(* com.colin.controller.ProductController.*(..))")
 	public void beforeAdvice(JoinPoint joinPoint) {
-		System.out.println("Method: " + joinPoint.getSignature());
+		logger.debug("Method: " + joinPoint.getSignature());
 		for (Object o : joinPoint.getArgs()) {
-			System.out.println("Argument: " + o);
+			logger.debug("Argument: " + o);
 		}
 	}
 
 	@AfterReturning(value = "execution(* com.colin.controller.ProductController.*(..))", returning = "returnValue")
 	public void afterAdvice(JoinPoint joinPoint, Object returnValue) {
-		System.out.println("Returns: " + returnValue);
+		logger.debug("Returns: " + returnValue);
 	}
 
 }

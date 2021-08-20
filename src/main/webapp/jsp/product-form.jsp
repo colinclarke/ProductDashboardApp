@@ -44,7 +44,7 @@
 						<fieldset class="form-group">
 							<label>Product ID</label>
 							<form:input type="text"
-								readonly="true" class="form-control"
+								readonly="true" cssClass="form-control"
 								name="id" path="product.id" required="required"/>
 							<form:errors path="product.id" cssClass="error" />
 						</fieldset>
@@ -53,7 +53,7 @@
 					<fieldset class="form-group">
 						<label>Product Name</label>
 						<form:input type="text"
-							value="${product.name}" class="form-control"
+							value="${product.name}" cssClass="form-control"
 							name="name" path="product.name" required="required"/>
 						<form:errors path="product.name" cssClass="error" />
 					</fieldset>
@@ -61,7 +61,7 @@
 					<fieldset class="form-group">
 						<label>Product Quantity</label>
 						<form:input type="text"
-							value="${product.quantity == 0 ? null : product.quantity}" class="form-control"
+							value="${product.quantity == 0 ? null : product.quantity}" cssClass="form-control"
 							name="quantity" path="product.quantity" required="required" />
 						<form:errors path="product.quantity" cssClass="error" />
 					</fieldset>
@@ -69,7 +69,7 @@
 					<fieldset class="form-group">
 						<label>Product Price</label>
 						<form:input type="text"
-							value="${product.price == 0 ? null : product.price}" class="form-control"
+							value="${product.price == 0 ? null : product.price}" cssClass="form-control"
 							name="price" path="product.price" required="required" />
 						<form:errors path="product.price" cssClass="error" />
 					</fieldset>
@@ -77,7 +77,7 @@
 					<fieldset class="form-group">
 						<label>Product Category</label>
 						<form:input type="text"
-							value="" class="form-control"
+							value="" cssClass="form-control"
 							name="category" path="category.name" required="required" />
 						<form:errors path="category.name" cssClass="error" />
 					</fieldset>
