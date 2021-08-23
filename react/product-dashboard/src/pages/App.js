@@ -5,21 +5,21 @@ import {
     Route
 } from "react-router-dom";
 import LandingPage from './LandingPage';
-import ProductForm from './ProductForm';
-import ProductListings from './ProductListings';
+import ProductFormPage from './ProductFormPage';
+import ProductListingsPage from './ProductListingsPage';
 
 function App() {
     return (
         <Router>
             <Switch>
                 <Route path="/products/add">
-                    <ProductForm/>
+                    <ProductFormPage/>
                 </Route>
                 <Route path="/products/edit/:pid">
-                    <ProductForm/>
+                    <ProductFormPage/>
                 </Route>
                 <Route path="/products">
-                    <ProductListings/>
+                    <ProductListingsPage/>
                 </Route>
                 <Route path="/">
                     <LandingPage/>
