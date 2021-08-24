@@ -1,6 +1,6 @@
 package com.colin.security;
 
-import org.springframework.context.annotation.Bean;
+/*import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,9 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.colin.service.UserDetailsServiceImpl;
+import com.colin.service.UserDetailsServiceImpl;*/
 
-@EnableWebSecurity
+/*@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
@@ -44,4 +44,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.logout().permitAll().and().exceptionHandling().accessDeniedPage("/403");
 	}
 
-}
+}*/

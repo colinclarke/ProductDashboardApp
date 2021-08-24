@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,5 +34,6 @@ public class Product {
 	private double price;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CATEGORY_ID", nullable = false)
+	@JsonBackReference
 	private Category category;
 }
