@@ -21,8 +21,10 @@ function ProductFormPage() {
     return (
         <div>
             <Header/>
-            <h2>{typeof pid == 'undefined' ? 'New Product' : 'Edit Product '+pid}</h2>
-            <ProductForm productExists={productExists} product={data}/>
+            <div className='container col-md-5'>
+                <h2>{typeof pid == 'undefined' ? 'New Product' : 'Edit Product '+pid}</h2>
+                <ProductForm productExists={productExists} product={data}/>
+            </div>
         </div>
     );
 }
