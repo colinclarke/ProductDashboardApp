@@ -1,41 +1,37 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
+import FetchService from '../services/FetchService';
 
-function ProductForm({productExists = false, product = null}) {
-    console.log(productExists, product);
-    const [name, setName] = useState(productExists ? product.name : '');
-    const [quantity, setQuantity] = useState(productExists ? product.quantity : undefined);
-    const [price, setPrice] = useState(productExists ? product.price : undefined);
+
+function ProductForm({pc}) {
+    const productExists = typeof pc !== 'undefined';
+    const [name, setName] = useState(productExists ? pc.product.name : '');
+    const [quantity, setQuantity] = useState(productExists ? pc.product.quantity : '');
+    const [price, setPrice] = useState(productExists ? pc.product.price : '');
+    const [category, setCategory] = useState(productExists ? pc.category.name : '');
 
     function onSubmit(event) {
-        console.log(name, quantity, price);
-        console.log(JSON.stringify({ 
-            id: product.id,
-            name: name,
-            quantity: quantity,
-            price: price
-         }));
-        const requestOptions = {
-            method: 'POST',
-            mode: 'cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                id: product.id,
-                name: name,
-                quantity: quantity,
-                price: price
-             })
-        };
-        fetch(process.env.REACT_APP_BASE_API_URL+'products', requestOptions)
-            .then(response => response.json())
-            .then(data => console.log(data));
+        let promise = productExists ? 
+            FetchService.EditProduct(pc.product.id, name, quantity, price, category) :
+            FetchService.NewProduct(name, quantity, price, category);
+        promise
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => console.log(data))
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
         event.preventDefault();
     }
 
     let productIdFormGroup = (
         <Form.Group className="mb-3" controlId="productId">
             <Form.Label>Product Id</Form.Label>
-            <Form.Control type="text" value={product.id} readOnly/>
+            <Form.Control type="text" value={productExists && pc.product.id} readOnly/>
         </Form.Group>
     );
 
@@ -57,6 +53,11 @@ function ProductForm({productExists = false, product = null}) {
             <Form.Group className="mb-3" controlId="productPrice">
                 <Form.Label>Product Price</Form.Label>
                 <Form.Control type="text" value={price} onChange={(event) => setPrice(event.target.value)}/>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="productCategory">
+                <Form.Label>Product Category</Form.Label>
+                <Form.Control type="text" value={category} onChange={(event) => setCategory(event.target.value)}/>
             </Form.Group>
 
             <div className="d-flex justify-content-around">
