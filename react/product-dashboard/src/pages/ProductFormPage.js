@@ -1,28 +1,26 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
-import useFetch from 'react-fetch-hook';
 import ProductForm from '../components/ProductForm';
+import useFetch from 'react-fetch-hook';
 
 function ProductFormPage() {
-
     const {pid} = useParams();
-    let productExists = true;
-    let {isLoading, error, data} = useFetch(process.env.REACT_APP_BASE_API_URL+'products');
-    if (typeof pid == 'undefined') {
-        productExists = false;
+    const { isLoading, data, error } = useFetch(process.env.REACT_APP_BASE_API_URL+'/products/'+pid, {
+        depends: [typeof pid !== 'undefined']
+    });
+
+    if (error) {
+        return <h1>uh oh</h1>;
     }
-
-    console.log(isLoading, error && error.status, data);
-
-    if (isLoading) return "Loading...";
-    if (error) return "Error fetching data";
 
     return (
         <div>
             <Header/>
-            <h2>{typeof pid == 'undefined' ? 'New Product' : 'Edit Product '+pid}</h2>
-            <ProductForm productExists={productExists} product={data}/>
+            <div className='container col-md-5'>
+                <h2>{typeof pid == 'undefined' ? 'New Product' : 'Edit Product '+pid}</h2>
+                {!isLoading && <ProductForm pc={data} />}
+            </div>
         </div>
     );
 }
