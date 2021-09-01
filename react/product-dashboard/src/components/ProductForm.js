@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
+import { Button } from 'react-bootstrap';
 import FetchService from '../services/FetchService';
 import { useHistory } from 'react-router-dom';
 
@@ -22,11 +23,11 @@ function ProductForm({pc}) {
                 }
                 return response.json();
             })
-            .then(data => console.log(data))
+            .then(() => history.push("/products"))
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
             });
-        history.push("/products");
+        event.preventDefault();
     }
 
     let productIdFormGroup = (
@@ -62,8 +63,8 @@ function ProductForm({pc}) {
             </Form.Group>
 
             <div className="d-flex justify-content-around">
-                <a href="/products" className="btn btn-danger">Cancel</a>
-                <input type="submit" className="btn btn-success" value="Save"/>
+                <Button variant="danger" type="button" href="/products">Cancel</Button>
+                <Button variant="success" type="submit">Save</Button>
             </div>
         </Form>
     );

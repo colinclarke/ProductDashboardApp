@@ -1,11 +1,16 @@
 import React from 'react';
 import Header from '../components/Header';
+import ProductTable from '../components/ProductTable';
+import ProductTableHeader from '../components/ProductTableHeader';
 
 function ProductListingsPage() {
     return (
         <div>
             <Header/>
-            <p>Product Listings Page</p>
+            <div className="container">
+                <ProductTableHeader/>
+                <ProductTable/>
+            </div>
         </div>
     );
 }
