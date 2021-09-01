@@ -4,7 +4,7 @@ import ProductTableRow from './ProductTableRow';
 
 function ProductTable() {
 
-    const [products, setProducts] = useState([]);
+    const [pc, setPc] = useState([]);
 
     useEffect(() => {
         getProducts();
@@ -18,7 +18,7 @@ function ProductTable() {
                 }
                 return response.json();
             })
-            .then(data => setProducts(data));
+            .then(data => setPc(data));
     }
 
     return (
@@ -35,7 +35,7 @@ function ProductTable() {
                 </tr>
             </thead>
             <tbody>
-                {products.map((product, i) => <ProductTableRow key={i} product={product} update={getProducts}/>)}
+                {pc.map((p, i) => <ProductTableRow key={i} pc={p} update={getProducts}/>)}
             </tbody>
         </table>
     );
