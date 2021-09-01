@@ -85,3 +85,4 @@
 2021-09-01 15:40:59,320 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-7] Argument: 21
 2021-09-01 15:40:59,328 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-7] Returns: ProductCategory(product=Product(id=21, name=Pineapples, quantity=127, price=6.98, category=Fruit), category=Fruit)
 2021-09-01 16:13:15,011 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-10] Method: List com.colin.controller.ProductController.listAllProducts()
+2021-09-01 16:13:15,040 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-10] Returns: [Product(id=9, name=Bananas, quantity=72, price=0.99, category=Fruit), Product(id=10, name=Pickles, quantity=762, price=4.43, category=Jar), Product(id=11, name=Beans, quantity=283, price=3.99, category=Canned Goods), Product(id=13, name=Carrots, quantity=202, price=1.25, category=Vegetables), Product(id=21, name=Pineapples, quantity=127, price=6.98, category=Fruit)]
