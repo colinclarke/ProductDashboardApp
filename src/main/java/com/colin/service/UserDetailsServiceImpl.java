@@ -51,5 +51,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 		userRepository.save(u);
 	}
+	
+	public User findById(Long id) {
+		return userRepository.findById(id).orElse(null);
+	}
 
 }

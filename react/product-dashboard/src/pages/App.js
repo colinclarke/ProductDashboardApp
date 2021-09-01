@@ -7,6 +7,7 @@ import {
 import LandingPage from './LandingPage';
 import ProductFormPage from './ProductFormPage';
 import ProductListingsPage from './ProductListingsPage';
+import CreateNewUserPage from './CreateNewUserPage'
 
 function App() {
     return (
@@ -20,6 +21,9 @@ function App() {
                 </Route>
                 <Route path="/products">
                     <ProductListingsPage/>
+                </Route>
+                <Route path = "/createNewUser">
+                    <CreateNewUserPage/>
                 </Route>
                 <Route path="/">
                     <LandingPage/>

@@ -47,8 +47,8 @@ public class LandingPageController {
 	}
 
 	@PostMapping("/create-new-user")
-	public ResponseEntity<HttpStatus> createNewUser(@Valid @RequestBody User u) {
-		userDetails.createNewUser(u);
+	public ResponseEntity<HttpStatus> createNewUser(@Valid @RequestBody User user) {
+		userDetails.createNewUser(user);
 
 		return new ResponseEntity<HttpStatus>(HttpStatus.ACCEPTED);
 	}

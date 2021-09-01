@@ -13,7 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,7 +37,7 @@ public class Category {
 	@NotBlank(message = "Each product must have a category")
 	private String name;
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-	@JsonManagedReference
+	@JsonManagedReference(value = "category")
 	private List<Product> products = new ArrayList<Product>();
 
 	public void addProduct(Product product) {

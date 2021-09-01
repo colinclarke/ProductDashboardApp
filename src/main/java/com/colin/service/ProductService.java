@@ -22,10 +22,17 @@ public class ProductService {
 	@Autowired
 	ProductRepository productRepository;
 
-	public List<Product> getAllProducts() {
+	public List<ProductCategory> getAllProducts() {
 		List<Product> list = new ArrayList<>();
 		productRepository.findAll().forEach(list::add);
-		return list;
+		List<ProductCategory> pcList = new ArrayList<>();
+		ProductCategory pc = new ProductCategory();
+		for (Product p : list) {
+			pc.setCategory(p.getCategory());
+			pc.setProduct(p);
+			pcList.add(pc);
+		}
+		return pcList;
 	}
 
 	public double getTotalPriceOfAllProducts() {
