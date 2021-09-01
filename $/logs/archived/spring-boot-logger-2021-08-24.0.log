@@ -84,7 +84,7 @@
 2021-08-24 15:30:48,982 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [RMI TCP Connection(10)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
 2021-08-24 15:30:48,985 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(10)-127.0.0.1] HikariPool-1 - Shutdown initiated...
 2021-08-24 15:30:48,995 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(10)-127.0.0.1] HikariPool-1 - Shutdown completed.
-=======
+
 2021-08-24 17:16:34,365 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
 2021-08-24 17:16:34,378 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SpringCrudApplication using Java 1.8.0_281 on LP-PF2VB15G with PID 16672 (C:\MyProjects\Spring\SpringCRUD\target\classes started by colin_clarke in C:\MyProjects\Spring\SpringCRUD)
 2021-08-24 17:16:34,378 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.5.3, Spring v5.3.9

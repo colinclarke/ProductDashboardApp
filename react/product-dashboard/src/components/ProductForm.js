@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import FetchService from '../services/FetchService';
-
+import { useHistory } from 'react-router-dom';
 
 function ProductForm({pc}) {
     const productExists = typeof pc !== 'undefined';
@@ -9,6 +9,7 @@ function ProductForm({pc}) {
     const [quantity, setQuantity] = useState(productExists ? pc.product.quantity : '');
     const [price, setPrice] = useState(productExists ? pc.product.price : '');
     const [category, setCategory] = useState(productExists ? pc.category.name : '');
+    const history = useHistory();
 
     function onSubmit(event) {
         let promise = productExists ? 
@@ -25,7 +26,7 @@ function ProductForm({pc}) {
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
             });
-        event.preventDefault();
+        history.push("/products");
     }
 
     let productIdFormGroup = (
