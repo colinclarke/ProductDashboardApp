@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.colin.models.Category;
 import com.colin.models.Product;
 import com.colin.models.ProductCategory;
+import com.colin.models.ProductQuantity;
 import com.colin.repo.CategoryRepository;
 import com.colin.service.ProductService;
 
@@ -34,7 +36,7 @@ public class ProductController {
 	private CategoryRepository categoryRepository;
 
 	@GetMapping("")
-	public List<Product> listAllProducts() {
+	public List<ProductCategory> listAllProducts() {
 		return productService.getAllProducts();
 	}
 
@@ -80,6 +82,19 @@ public class ProductController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<HttpStatus> deleteProduct(@PathVariable long id) {
 		productService.deleteProduct(id);
+		return new ResponseEntity<HttpStatus>(HttpStatus.ACCEPTED);
+	}
+	
+	@DeleteMapping("/quantity")
+	public ResponseEntity<HttpStatus> deleteQuantity(@RequestBody ProductQuantity pq) {
+		Product p = new Product();
+		p = productService.getById(pq.getProductId()).orElse(null);
+		if (p == null) {
+			return null;
+		}
+		p.setQuantity(p.getQuantity() - pq.getQuantity());
+		productService.updateProduct(p);
+		
 		return new ResponseEntity<HttpStatus>(HttpStatus.ACCEPTED);
 	}
 
