@@ -4,9 +4,10 @@ const requestOptions = {
 };
 
 const FetchService = {
-    GetProduct: (id) => {
+    GetProducts: () => {
         requestOptions.method = 'GET';
-        return fetch(process.env.REACT_APP_BASE_API_URL+'/products/'+id, requestOptions);
+        delete requestOptions.body;
+        return fetch(process.env.REACT_APP_BASE_API_URL+'/products', requestOptions);
     },
     NewProduct: (name, quantity, price, category) => {
         requestOptions.method = 'POST';
@@ -36,6 +37,21 @@ const FetchService = {
             }
         });
         return fetch(process.env.REACT_APP_BASE_API_URL+'/products/edit/'+id, requestOptions);
+    },
+    DeleteProduct: (id) => {
+        requestOptions.method = 'DELETE';
+        delete requestOptions.body;
+        return fetch(process.env.REACT_APP_BASE_API_URL+'/products/delete/'+id, requestOptions);
+    },
+    NewUser: (username, password) => {
+        requestOptions.method = 'POST';
+        requestOptions.body = JSON.stringify({
+                username: username,
+                password: password,
+                role: 'USER_ROLE',
+                enabled: true
+        });
+        return fetch(process.env.REACT_APP_BASE_API_URL+'/create-new-user', requestOptions);
     }
 }
 

@@ -24,7 +24,7 @@ class SpringCrudIntegrationTests {
 	@Autowired
 	ProductRepository productRepository;
 
-	@Test
+/*	@Test
 	void givenProduct_whenGetAllProducts_thenStatus200() {
 
 		Category category = new Category(1, "Dairy", new ArrayList<>());
@@ -34,6 +34,6 @@ class SpringCrudIntegrationTests {
 
 		// mvc.perform(get("/products"))
 
-	}
+	}*/
 
 }

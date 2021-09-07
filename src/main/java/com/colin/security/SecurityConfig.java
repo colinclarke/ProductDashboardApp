@@ -9,9 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.colin.service.UserDetailsServiceImpl;*/
+import com.colin.service.UserDetailsServiceImpl;
 
-/*@EnableWebSecurity
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
@@ -44,4 +44,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.logout().permitAll().and().exceptionHandling().accessDeniedPage("/403");
 	}
 
-}*/
+} */

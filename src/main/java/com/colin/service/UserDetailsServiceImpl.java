@@ -30,14 +30,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return new MyUserDetails(user);
 	}
 
-	public void createNewUser(String name, String password, String role) {
-		User u = new User();
-		u.setUsername(name);
+	public void createNewUser(User u) {
+
 		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
-		String encryptP = b.encode(password);
+		String encryptP = b.encode(u.getPassword());
 		u.setPassword(encryptP);
 
-		if (role.equals("ROLE_USER")) {
+		/*if (role.equals("ROLE_USER")) {
 			u.addRole(roleRepository.getRoleByName(role));
 		} else {
 
@@ -47,10 +46,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			for (String s : options) {
 				u.addRole(roleRepository.getRoleByName(s));
 			}
-		}
+		}*/
 		u.setEnabled(true);
 
 		userRepository.save(u);
+	}
+	
+	public User findById(Long id) {
+		return userRepository.findById(id).orElse(null);
 	}
 
 }
