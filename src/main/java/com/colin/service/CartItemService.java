@@ -2,6 +2,7 @@ package com.colin.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.colin.models.CartItem;
 import com.colin.models.Product;
 import com.colin.repo.CartItemRepository;
+
+import lombok.val;
 
 @Service
 public class CartItemService {
@@ -23,7 +26,9 @@ public class CartItemService {
 		cartItems.stream()
 			.filter(c -> userId.equals(c.getUser().getId()))
 			.forEach(cartProducts::add);
-			
+		/*val cartProducts = cartItems.stream()
+				.filter(c -> userId.equals(c.getUser().getId()))
+				.collect(Collectors.toList());*/
 		
 		return cartProducts;
 	}

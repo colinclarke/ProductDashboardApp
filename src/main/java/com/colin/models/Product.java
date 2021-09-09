@@ -48,6 +48,14 @@ public class Product {
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	List<CartItem> cartItems = new ArrayList<CartItem>(); 
 	
+	public Product(String name, int quantity, double price, Category category, List<CartItem> cartItems) {
+		this.name = name;
+		this.quantity = quantity;
+		this.price = price;
+		this.category = category;
+		this.cartItems = cartItems;
+	}
+	
 	@Override
 	public String toString() {
 		return "Id: " + id + " Name: " + name + " Quantity: " + quantity + " Price: " + price + " Category: " + category;
