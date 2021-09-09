@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
+import { useHistory } from 'react-router';
 import FetchService from '../services/FetchService';
 
 function CreateNewUser() {
     
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const history = useHistory();
     
     function onSubmit(event) {
         let promise = FetchService.NewUser(username, password);
@@ -15,6 +17,7 @@ function CreateNewUser() {
                 if (!response.ok) {
                     throw new Error('Response not ok!')
                 }
+                history.push("/login");
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);

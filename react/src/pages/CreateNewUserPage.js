@@ -4,11 +4,9 @@ import CreateNewUser from '../components/CreateNewUser';
 function createNewUserPage() {
 
     return (
-        <div>
+        <div className="container col-md-5">
             <h1>Create a new User!</h1>
-            <CreateNewUser>
-
-            </CreateNewUser>
+            <CreateNewUser/>
         </div>
     )
 
