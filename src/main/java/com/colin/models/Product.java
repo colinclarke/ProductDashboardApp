@@ -41,10 +41,12 @@ public class Product {
 	private int quantity;
 	@Positive(message = "Product price must be greater than zero")
 	private double price;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CATEGORY_ID", nullable = false)
 	@JsonBackReference(value = "category")
 	private Category category;
+
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	List<CartItem> cartItems = new ArrayList<CartItem>(); 
 	

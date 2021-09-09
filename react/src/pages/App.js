@@ -7,6 +7,7 @@ import {
 import LandingPage from './LandingPage';
 import ProductFormPage from './ProductFormPage';
 import ProductListingsPage from './ProductListingsPage';
+import Login from './Login';
 import CreateNewUserPage from './CreateNewUserPage'
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
                 </Route>
                 <Route path="/products">
                     <ProductListingsPage/>
+                </Route>
+                <Route path="/Login">
+                    <Login/>
                 </Route>
                 <Route path = "/createNewUser">
                     <CreateNewUserPage/>

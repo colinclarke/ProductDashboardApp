@@ -69,7 +69,17 @@ const FetchService = {
             quantity: quantity
         });
         return fetch(process.env.REACT_APP_BASE_API_URL+'/'+uid, requestOptions);
+    },
+    LoginRequest: (Username, password) => {
+        requestOptions.method = 'POST';
+        requestOptions.body = JSON.stringify({
+            Username: Username,
+            password: password,
+            
+        });
+        return fetch(process.env.REACT_APP_BASE_API_URL+'/api/auth/authenticate', requestOptions);
     }
+
 }
 
 export default FetchService;
