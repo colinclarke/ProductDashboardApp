@@ -52,7 +52,20 @@ const FetchService = {
                 enabled: true
         });
         return fetch(process.env.REACT_APP_BASE_API_URL+'/create-new-user', requestOptions);
+    },
+
+    LoginRequest: (Username, password) => {
+        requestOptions.method = 'POST';
+        requestOptions.body = JSON.stringify({
+            Username: Username,
+            password: password,
+            
+        });
+        return fetch(process.env.REACT_APP_BASE_API_URL+'/api/auth/authenticate', requestOptions);
+
+
     }
+
 }
 
 export default FetchService;

@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+
 
 
 function LoginForm({Login,error}) {
@@ -11,23 +13,32 @@ function LoginForm({Login,error}) {
     }
     return (
         <form onSubmit={submitHandler}>
-            <div className="form-inner">
-                <h2> Login</h2>
+            
                 {(error !=="") ? (<div className="error">{error} </div> ) : ""}
 
-                <div className="form-group">
-                    <label htmlFor="Username"> Username:</label>
-                    <input type="text" Username="Username" id="Username" onChange ={e => setDetails({...details, Username: e.target.value})}value={details.Username} />
-                </div>
                 
-                <div className="form-group">
-                    <label htmlFOr="password"> password: </label>
-                    <input type="password" name="password" id="password"onChange ={e => setDetails({...details, password: e.target.value})}value={details.passowrd}/>
+        <div className="simple-login-container">
+          <h2>Login Form</h2>
+          <div className="row">
+            <div className="col-md-12 form-group">
+              <input type="text" className="form-control" placeholder="Username" onChange ={e => setDetails({...details, Username: e.target.value})}value={details.Username} />
             </div>
-            <input type="submit" value="LOGIN"/>
+          </div>
+          <div className="row">
+            <div className="col-md-12 form-group">
+              <input type="password" placeholder="Enter your Password" className="form-control" onChange ={e => setDetails({...details, password: e.target.value})}value={details.passowrd} />
             </div>
-        </form>
-    )
-}
+          </div>
+          <div className="row">
+            <div className="col-md-12 form-group">
+              <input type="submit" className="btn btn-block btn-login"  />
+            </div>
+          </div>
+        </div>
+      
+      </form>
+    );
+  }
+
 
 export default LoginForm;
