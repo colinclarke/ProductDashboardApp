@@ -30,28 +30,30 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return new MyUserDetails(user);
 	}
 
-	public void createNewUser(User u) {
+	public boolean createNewUser(User u) {
+
+		if (userRepository.getUserByUsername(u.getUsername()) != null) {
+			return false;
+		}
 
 		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
 		String encryptP = b.encode(u.getPassword());
 		u.setPassword(encryptP);
 
-		/*if (role.equals("ROLE_USER")) {
-			u.addRole(roleRepository.getRoleByName(role));
-		} else {
-
-			String[] options;
-			options = role.split(",");
-
-			for (String s : options) {
-				u.addRole(roleRepository.getRoleByName(s));
-			}
-		}*/
+		/*
+		 * if (role.equals("ROLE_USER")) {
+		 * u.addRole(roleRepository.getRoleByName(role)); } else {
+		 * 
+		 * String[] options; options = role.split(",");
+		 * 
+		 * for (String s : options) { u.addRole(roleRepository.getRoleByName(s)); } }
+		 */
 		u.setEnabled(true);
 
 		userRepository.save(u);
+		return true;
 	}
-	
+
 	public User findById(Long id) {
 		return userRepository.findById(id).orElse(null);
 	}

@@ -8,6 +8,7 @@ function LoginForm({Login,error}) {
 
     const submitHandler= e => {
         e.preventDefault();
+        console.log(details);
         Login(details);
     }
 

@@ -35,6 +35,8 @@ public class JwtAuthController {
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
+		System.out.println(authenticationRequest.getUsername() + " : " + authenticationRequest.getPassword());
+
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
@@ -53,6 +55,7 @@ public class JwtAuthController {
 		} catch (DisabledException e) {
 			throw new Exception("USER_DISABLED", e);
 		} catch (BadCredentialsException e) {
+			System.out.println("got here");
 			throw new Exception("INVALID_CREDENTIALS", e);
 		}
 	}
