@@ -17913,6 +17913,8 @@
 2021-09-09 16:08:50,923 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-36 - Shutdown initiated...
 2021-09-09 16:08:50,930 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-36 - Shutdown completed.
 =======
+=======
+>>>>>>> bfbfb98a5c8cf37721483cb0a63e685d9e3f4212
 2021-09-09 14:19:20,290 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
 2021-09-09 14:19:20,314 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SpringCrudApplication using Java 1.8.0_281 on LP-PF2VB15G with PID 20388 (C:\MyProjects\Spring\SpringCRUD\target\classes started by colin_clarke in C:\MyProjects\Spring\SpringCRUD)
 2021-09-09 14:19:20,315 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.5.3, Spring v5.3.9
@@ -18426,6 +18428,7 @@
 2021-09-09 16:03:46,320 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-4] Method: List com.colin.controller.ProductController.listAllProducts()
 2021-09-09 16:03:46,330 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-4] Returns: [ProductCategory(product=Id: 3 Name: Carrots Quantity: 762 Price: 3.81 Category: Vegetable, category=Vegetable), ProductCategory(product=Id: 4 Name: Beans Quantity: 202 Price: 1.25 Category: Canned Goods, category=Canned Goods), ProductCategory(product=Id: 5 Name: Apple Quantity: 202 Price: 0.98 Category: Fruit, category=Fruit), ProductCategory(product=Id: 6 Name: Pineapple Quantity: 812 Price: 8.99 Category: Fruit, category=Fruit), ProductCategory(product=Id: 7 Name: Bananas Quantity: 283 Price: 1.25 Category: Fruit, category=Fruit), ProductCategory(product=Id: 8 Name: Sriracha Quantity: 999 Price: 5.99 Category: Sauce, category=Sauce)]
 2021-09-09 16:03:52,032 WARN com.colin.security.JwtRequestFilter [http-nio-8484-exec-5] JWT Token does not begin with Bearer String
+<<<<<<< HEAD
 2021-09-09 16:34:23,668 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
 2021-09-09 16:34:23,683 INFO org.springframework.boot.StartupInfoLogger [main] Starting CartItemControllerTest using Java 15.0.2 on LP-PF2VASVX with PID 16240 (started by genevieve_zola in C:\Users\genevieve_zola\Documents\Practice\Phase1GroupProject\ProductDashboardApp)
 2021-09-09 16:34:23,684 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.5.3, Spring v5.3.9
