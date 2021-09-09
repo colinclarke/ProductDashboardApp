@@ -7,7 +7,9 @@ import useFetch from 'react-fetch-hook';
 function ProductFormPage() {
     const {pid} = useParams();
     const history = useHistory();
+    let user = localStorage.getItem("user");
     const { isLoading, data, error } = useFetch(process.env.REACT_APP_BASE_API_URL+'/products/'+pid, {
+        headers: {Authorization: user !== null ? 'Bearer '+JSON.parse(user).token : ''},
         depends: [typeof pid !== 'undefined']
     });
 

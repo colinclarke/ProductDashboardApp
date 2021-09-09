@@ -10,6 +10,7 @@ import lombok.Getter;
 @Getter
 public class JwtResponse implements Serializable {
 	private static final long serialVersionUID = -3977738631880165217L;
+	private final long id;
 	private final String token;
 	private final String username;
 	private final List<String> roles;

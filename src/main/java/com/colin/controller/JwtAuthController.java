@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.colin.models.JwtRequest;
 import com.colin.models.JwtResponse;
+import com.colin.repo.UserRepository;
 import com.colin.security.JwtTokenUtil;
 import com.colin.service.JwtUserDetailsService;
 
@@ -32,10 +33,11 @@ public class JwtAuthController {
 	@Autowired
 	private JwtUserDetailsService userDetailsService;
 
+	@Autowired
+	private UserRepository userRepository;
+
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
-
-		System.out.println(authenticationRequest.getUsername() + " : " + authenticationRequest.getPassword());
 
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
@@ -45,8 +47,9 @@ public class JwtAuthController {
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
-		return ResponseEntity.ok(new JwtResponse(token, userDetails.getUsername(), roles));// httpstatus as 200(ok) and
-																							// also show token
+		final long userId = userRepository.getUserByUsername(authenticationRequest.getUsername()).getId();
+
+		return ResponseEntity.ok(new JwtResponse(userId, token, userDetails.getUsername(), roles));
 	}
 
 	private void authenticate(String username, String password) throws Exception {
@@ -55,7 +58,6 @@ public class JwtAuthController {
 		} catch (DisabledException e) {
 			throw new Exception("USER_DISABLED", e);
 		} catch (BadCredentialsException e) {
-			System.out.println("got here");
 			throw new Exception("INVALID_CREDENTIALS", e);
 		}
 	}

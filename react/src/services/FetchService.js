@@ -72,7 +72,7 @@ const FetchService = {
             productId: pid,
             quantity: quantity
         });
-        return fetch(process.env.REACT_APP_BASE_API_URL+'/'+uid, requestOptions);
+        return fetch(process.env.REACT_APP_BASE_API_URL+'/cart/'+uid, requestOptions);
     },
     LoginRequest: (Username, password) => {
         requestOptions.method = 'POST';
