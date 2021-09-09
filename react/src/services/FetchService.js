@@ -4,7 +4,11 @@ const requestOptions = {
 };
 
 function getJwtToken() {
-    return 'Bearer '+localStorage.getItem('token');
+    let user = localStorage.getItem("user");
+    if (user !== null) {
+        return 'Bearer '+user.token;
+    }
+    return '';
 }
 
 const FetchService = {
@@ -73,11 +77,10 @@ const FetchService = {
     LoginRequest: (Username, password) => {
         requestOptions.method = 'POST';
         requestOptions.body = JSON.stringify({
-            Username: Username,
+            username: Username,
             password: password,
-            
         });
-        return fetch(process.env.REACT_APP_BASE_API_URL+'/api/auth/authenticate', requestOptions);
+        return fetch(process.env.REACT_APP_BASE_API_URL+'/auth/authenticate', requestOptions);
     }
 
 }

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
+import { useHistory } from 'react-router';
 import LoginForm from '../components/LoginForm';
+import FetchService from '../services/FetchService';
 import './Login.css';
 
 
@@ -7,40 +9,42 @@ import './Login.css';
 
 
 function Login() {
-    const adminUser = {
-        Username: "admin",
-        password: "admin123"
-    }
 
-    const [user, setUser] = useState({Username: ""});
+    const [user, setUser] = useState(localStorage.getItem("user"));
     const [error, setError] = useState("");
+    const history = useHistory();
 
     const Login = details => {
-        console.log(details);
-       
-        if (details.Username === adminUser.Username && details.password === adminUser.password){
-            console.log("Logged in");
-            setUser({
-                Username: details.Username,
-                
-            } );
-        }  else {
-            console.log("Details do not match!");
-            setError("Details do not match!");
+        FetchService.LoginRequest(details.username, details.password)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                localStorage.setItem("user", data);
+                setUser(data);
+                history.push("/products");
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+                setError("Incorrect username or password");
+            });
     }
-}
 
     
 
     const Logout = () => {
-        setUser({Username: ""});
+        localStorage.removeItem("user");
+        setUser(null);
     }
 
     return (
         <div className= "Login">
-           {(user.Username !== "") ? (
+           {(user !== null) ? (
             <div className= "welcome">
-                <h2> Welcome, <span> {user.Username}</span></h2>
+                <h2> Welcome, <span> {user.username}</span></h2>
                 <button onClick={Logout}> Logout </button>
                 </div>
            ) : (
