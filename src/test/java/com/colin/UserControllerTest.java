@@ -1,5 +1,6 @@
 package com.colin;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -65,10 +66,12 @@ ObjectMapper map;
 		Role r = new Role();
 		r.setName("ROLE_USER");
 		roles.add(r);
+		User u = new User(1, "Jason", "hero", roles, true, new ArrayList<>());
 
+		when(userDetailsService.createNewUser(u)).thenReturn(true);
 		
 		mvc.perform(post("/api/create-new-user")
-				.content(toJsonString(new User(1, "Percy", "pepperbox", roles, true, new ArrayList<>())))
+				.content(toJsonString(u))
 						.contentType(MediaType.APPLICATION_JSON)
 						.accept(MediaType.APPLICATION_JSON))
 						.andExpect(status().isAccepted());
