@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 import FetchService from '../services/FetchService';
 
 function ProductTableRow({pc, update}) {
 
     const [quantity, setQuantity] = useState(1);
+    const history = useHistory();
+    const user = localStorage.getItem("user");
+    const isAdmin = user !== null && JSON.parse(user).roles.includes('ROLE_ADMIN')
 
     function handleDelete() {
         FetchService.DeleteProduct(pc.product.id).then(() => update()).catch(error => console.error(error));
     }
 
     function handleAddToCart() {
-        FetchService.AddProductToCart(localStorage.getItem('userId'), pc.product.id, quantity)
+        if (user === null) {
+            history.push("/login");
+        }
+        FetchService.AddProductToCart(JSON.parse(user).id, pc.product.id, quantity)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -30,13 +37,16 @@ function ProductTableRow({pc, update}) {
             <td>${pc.product.price}</td>
             <td>${(pc.product.quantity*pc.product.price).toFixed(2)}</td>
             <td>
-                <div className="d-flex justify-content-around">
+                <div>
+                    { !isAdmin ?
                     <form>
                         <input className="mx-3" type="number" min="1" max={pc.product.quantity} value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
                         <Button variant="primary" onClick={handleAddToCart}>Add to cart</Button>
-                    </form>
-                    <Button variant="secondary" href={"/products/edit/"+pc.product.id}>Edit</Button>
-                    <Button variant="danger" onClick={handleDelete}>Delete</Button>
+                    </form> :
+                    <div className="d-flex justify-content-around">
+                        <Button variant="secondary" href={"/products/edit/"+pc.product.id}>Edit</Button>
+                        <Button variant="danger" onClick={handleDelete}>Delete</Button>
+                    </div> }
                 </div>
             </td>
         </tr>

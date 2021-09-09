@@ -4,10 +4,6 @@ import LoginForm from '../components/LoginForm';
 import FetchService from '../services/FetchService';
 import './Login.css';
 
-
-
-
-
 function Login() {
 
     const [user, setUser] = useState(localStorage.getItem("user"));
