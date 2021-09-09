@@ -4,8 +4,6 @@ import React from 'react';
 function LandingPage() {
   return (
     <div>
-
-
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
       <title>Product Dashboard</title>
       <br />
@@ -22,7 +20,7 @@ function LandingPage() {
               <a href="/products" className="btn btn-primary">Go to dashboard</a>
               <a href="/login" className="btn btn-primary">Login</a>
               <a href="/logout" className="btn btn-primary">Logout</a>
-              <a href="/create-new-user" className="btn btn-primary">Create new user</a>
+              <a href="/createnewuser" className="btn btn-primary">Create new user</a>
             </div>
           </div>
         </div>

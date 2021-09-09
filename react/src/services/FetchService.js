@@ -6,7 +6,7 @@ const requestOptions = {
 function getJwtToken() {
     let user = localStorage.getItem("user");
     if (user !== null) {
-        return 'Bearer '+user.token;
+        return 'Bearer '+JSON.parse(user).token;
     }
     return '';
 }

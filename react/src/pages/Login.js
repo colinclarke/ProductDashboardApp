@@ -23,7 +23,7 @@ function Login() {
                 return response.json();
             })
             .then(data => {
-                localStorage.setItem("user", data);
+                localStorage.setItem("user", JSON.stringify(data));
                 setUser(data);
                 history.push("/products");
             })
