@@ -16,9 +16,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -43,5 +40,9 @@ public class Role {
 			@JoinColumn(name = "user_id") })
 	@JsonBackReference
 	private Set<User> users = new HashSet<>();
+
+	public Role(String name) {
+		this.name = name;
+	}
 
 }
