@@ -42,8 +42,9 @@ public class JwtAuthController {
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
-				.collect(Collectors.toList());
+
+		List<String> roles = userRepository.getUserByUsername(authenticationRequest.getUsername()).getRoles().stream()
+				.map((role) -> role.getName()).collect(Collectors.toList());
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
 

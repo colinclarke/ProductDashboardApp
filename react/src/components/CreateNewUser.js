@@ -36,7 +36,11 @@ function CreateNewUser() {
                 if (!response.ok) {
                     throw new Error('Response not ok!')
                 }
-                history.push("/login");
+                if (isAdmin) {
+                    history.push("/");
+                } else {
+                    history.push("/login");
+                }
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
