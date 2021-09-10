@@ -17,10 +17,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,10 +44,12 @@ public class Product {
 	private Category category;
 
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-	List<CartItem> cartItems = new ArrayList<CartItem>(); 
-	
+	@JsonBackReference
+	List<CartItem> cartItems = new ArrayList<CartItem>();
+
 	@Override
 	public String toString() {
-		return "Id: " + id + " Name: " + name + " Quantity: " + quantity + " Price: " + price + " Category: " + category;
+		return "Id: " + id + " Name: " + name + " Quantity: " + quantity + " Price: " + price + " Category: "
+				+ category;
 	}
 }

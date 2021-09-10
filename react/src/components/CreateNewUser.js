@@ -7,10 +7,29 @@ function CreateNewUser() {
     
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const allRoles = ["ROLE_USER", "ROLE_ADMIN", "ROLE_MANAGER"];
+    const [roles, setRoles] = useState([]);
     const history = useHistory();
+    const isAdmin = (localStorage.getItem("user") !== null) && JSON.parse(localStorage.getItem("user")).roles.includes("ROLE_ADMIN");
+
+    let roleCheckboxes = [];
+    for (let i in allRoles) {
+        let role = allRoles[i];
+        roleCheckboxes.push(
+            <Form.Check type="checkbox" value={role} label={role} key={i} id={i}
+                onChange={()=> {
+                    if (roles.includes(role)) {
+                        setRoles(roles.filter(e => e !== role))
+                    } else {
+                        roles.push(role);
+                        setRoles(roles);
+                    }
+                }}/>
+        );
+    };
     
     function onSubmit(event) {
-        let promise = FetchService.NewUser(username, password);
+        let promise = FetchService.NewUser(username, password, roles);
 
         promise
             .then(response => {
@@ -36,6 +55,12 @@ function CreateNewUser() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type = "password" value = {password} onChange={(event)=> setPassword(event.target.value)}></Form.Control>
             </Form.Group>
+            { isAdmin &&
+            <Form.Group className="mb-3" controlId="roles">
+                <Form.Label>Roles</Form.Label>
+                {roleCheckboxes}
+            </Form.Group>
+            }
 
             <div className="d-flex justify-content-around">
                <a href="/landingPage" className="btn btn-danger">Cancel</a> 

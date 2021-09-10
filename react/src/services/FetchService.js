@@ -55,12 +55,12 @@ const FetchService = {
         delete requestOptions.body;
         return fetch(process.env.REACT_APP_BASE_API_URL+'/products/delete/'+id, requestOptions);
     },
-    NewUser: (username, password) => {
+    NewUser: (username, password, roles) => {
         requestOptions.method = 'POST';
         requestOptions.body = JSON.stringify({
                 username: username,
                 password: password,
-                role: 'USER_ROLE',
+                roles: roles,
                 enabled: true
         });
         return fetch(process.env.REACT_APP_BASE_API_URL+'/create-new-user', requestOptions);
