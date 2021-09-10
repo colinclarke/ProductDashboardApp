@@ -41,6 +41,7 @@ public class Role {
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "user_id") })
+	@JsonBackReference
 	private Set<User> users = new HashSet<>();
 
 }

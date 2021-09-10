@@ -39,5 +39,6 @@ public class CartItem {
 	private User user;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "PRODUCT_ID", nullable = false)
+	@JsonBackReference
 	private Product product;
 }

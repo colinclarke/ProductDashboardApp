@@ -39,7 +39,7 @@ public class User {
 	private String username;
 	private String password;
 	@ManyToMany(mappedBy = "users", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
-	@JsonBackReference
+	@JsonManagedReference
 	private Set<Role> roles = new HashSet<>();
 	private boolean enabled;
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

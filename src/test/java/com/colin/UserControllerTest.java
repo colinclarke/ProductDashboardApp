@@ -2,6 +2,7 @@ package com.colin;
 
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.doReturn;
+import static org.hamcrest.CoreMatchers.any;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -68,13 +69,13 @@ ObjectMapper map;
 		Role r = new Role();
 		r.setName("ROLE_USER");
 		roles.add(r);
-		User u = new User(1, "Jason", "hero", roles, true, new ArrayList<>());
+		User user = new User(1, "Jason", "hero", roles, true, new ArrayList<>());
 		boolean newUser = true;
 		
-		when(userDetails.createNewUser(u)).thenReturn(newUser);
+		when(userDetails.createNewUser(user)).thenReturn(newUser);
 		
 		mvc.perform(post("/api/create-new-user")
-				.content(toJsonString(u))
+				.content(toJsonString(user))
 						.contentType(MediaType.APPLICATION_JSON)
 						.accept(MediaType.APPLICATION_JSON))
 						.andExpect(status().isAccepted());
