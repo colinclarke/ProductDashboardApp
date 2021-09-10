@@ -1,6 +1,7 @@
 package com.colin;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class UserServiceTest {
 		
 		when(userRepository.save(u)).thenReturn(u);
 		
-		userService.createNewUser(u);
+		assertTrue(userService.createNewUser(u));
 		assertNotNull(u);
 	}
 }
