@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.colin.models.DummyUser;
 import com.colin.models.Role;
 import com.colin.models.User;
 import com.colin.repo.RoleRepository;
@@ -37,7 +38,7 @@ public class LandingPageController {
 	}
 
 	@PostMapping("/create-new-user")
-	public ResponseEntity<HttpStatus> createNewUser(@Valid @RequestBody User user) {
+	public ResponseEntity<HttpStatus> createNewUser(@Valid @RequestBody DummyUser user) {
 		if (userDetails.createNewUser(user)) {
 			return new ResponseEntity<HttpStatus>(HttpStatus.ACCEPTED);
 		}

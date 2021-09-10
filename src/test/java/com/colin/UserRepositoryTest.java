@@ -28,7 +28,7 @@ public class UserRepositoryTest {
 	@Autowired
 	UserRepository userRepository;
 	
-	@Test
+	/*@Test
 	public void testSave() {
 		Set<Role> roles = new HashSet<>();
 		Role r = new Role();
@@ -42,5 +42,5 @@ public class UserRepositoryTest {
 		User u2 = userRepository.save(u);
 		assertNotNull(u2);
 		assertTrue(u.getUsername().equals(u2.getUsername()));
-	}
+	}*/
 }

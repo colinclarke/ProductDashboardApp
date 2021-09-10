@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.colin.models.DummyUser;
 import com.colin.models.User;
 import com.colin.repo.RoleRepository;
 import com.colin.repo.UserRepository;
@@ -30,19 +31,29 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return new MyUserDetails(user);
 	}
 
-	public boolean createNewUser(User u) {
+	public boolean createNewUser(DummyUser u) {
 
 		if (userRepository.getUserByUsername(u.getUsername()) != null) {
 			return false;
 		}
 
+		User u2 = new User();
+		u2.setUsername(u.getUsername());
 		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
 		String encryptP = b.encode(u.getPassword());
-		u.setPassword(encryptP);
+		u2.setPassword(encryptP);
 
-		u.setEnabled(true);
+		u2.setEnabled(true);
+		
+		if (u.getRoles().isEmpty()) {
+			u2.addRole(roleRepository.getRoleByName("ROLE_USER"));
+		}
+		
+		for (String s : u.getRoles()) {
+			u2.addRole(roleRepository.getRoleByName(s));
+		}
 
-		userRepository.save(u);
+		userRepository.save(u2);
 		return true;
 	}
 

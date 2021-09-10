@@ -60,8 +60,7 @@ const FetchService = {
         requestOptions.body = JSON.stringify({
                 username: username,
                 password: password,
-                roles: roles,
-                enabled: true
+                roles: roles
         });
         return fetch(process.env.REACT_APP_BASE_API_URL+'/create-new-user', requestOptions);
     },
