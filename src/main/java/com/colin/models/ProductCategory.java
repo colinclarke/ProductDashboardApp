@@ -8,10 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductCategory {
-
-	// @JsonBackReference(value = "product")
 	private Product product;
-	// @JsonBackReference(value = "category")
 	private Category category;
 
 }
