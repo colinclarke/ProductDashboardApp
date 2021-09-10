@@ -40,14 +40,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		String encryptP = b.encode(u.getPassword());
 		u.setPassword(encryptP);
 
-		/*
-		 * if (role.equals("ROLE_USER")) {
-		 * u.addRole(roleRepository.getRoleByName(role)); } else {
-		 * 
-		 * String[] options; options = role.split(",");
-		 * 
-		 * for (String s : options) { u.addRole(roleRepository.getRoleByName(s)); } }
-		 */
 		u.setEnabled(true);
 
 		userRepository.save(u);
