@@ -26,6 +26,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.colin.controller.LandingPageController;
 import com.colin.controller.ProductController;
 import com.colin.models.Category;
+import com.colin.models.DummyUser;
 import com.colin.models.Product;
 import com.colin.models.ProductCategory;
 import com.colin.models.Role;
@@ -61,15 +62,12 @@ ObjectMapper map;
 		
 	}
 
-	/*@Test
+	@Test
 	void createNewUser() throws Exception {
 		
 		
-		Set<Role> roles = new HashSet<>();
-		Role r = new Role();
-		r.setName("ROLE_USER");
-		roles.add(r);
-		User user = new User(1, "Jason", "hero", roles, true, new ArrayList<>());
+		
+		DummyUser user = new DummyUser("Percy", "pepperbox", new ArrayList<>());
 		boolean newUser = true;
 		
 		when(userDetails.createNewUser(user)).thenReturn(newUser);
@@ -79,7 +77,7 @@ ObjectMapper map;
 						.contentType(MediaType.APPLICATION_JSON)
 						.accept(MediaType.APPLICATION_JSON))
 						.andExpect(status().isAccepted());
-	}*/
+	}
 	
 	public static String toJsonString(final Object obj) {
 		try {
