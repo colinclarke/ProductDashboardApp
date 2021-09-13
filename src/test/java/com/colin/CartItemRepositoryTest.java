@@ -30,7 +30,7 @@ import com.colin.repo.CartItemRepository;
 @AutoConfigureMockMvc
 public class CartItemRepositoryTest {
 
-	@Autowired
+	/*@Autowired
 	CartItemRepository cartItemRepository;
 	
 	@Test
@@ -79,7 +79,7 @@ public class CartItemRepositoryTest {
 		
 		assertNull(cartItemRepository.findById(20l).orElse(null));
 		
-	}
+	}*/
 
 	
 }

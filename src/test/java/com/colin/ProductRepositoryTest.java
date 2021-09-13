@@ -23,7 +23,7 @@ import com.colin.repo.ProductRepository;
 @AutoConfigureMockMvc
 public class ProductRepositoryTest {
 
-	@Autowired
+	/*@Autowired
 	ProductRepository productRepository;
 	
 	@Autowired
@@ -59,5 +59,5 @@ public class ProductRepositoryTest {
 		Product product = new Product(2, "Onion", 3, 1.99, category, new ArrayList<>());
 		categoryRepository.save(category);
 		productRepository.delete(product);
-	}
+	}*/
 }
