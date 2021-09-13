@@ -35,10 +35,11 @@ function CartPage() {
             Authorization: "Bearer "+JSON.parse(localStorage.getItem("user")).token,
             token: token.id,
             amount: totalPrice,
+            userid: user.id
         },})
         .then(() => {
-           alert("Payment Success");
-           history.push("/products");
+            alert("Payment Success");
+            history.push("/products");
         })
         .catch((error) => {
            alert(error);
