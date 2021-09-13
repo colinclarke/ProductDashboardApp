@@ -45,9 +45,9 @@ public class Product {
 	private Category category;
 
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-	@JsonManagedReference
-	List<CartItem> cartItems = new ArrayList<CartItem>(); 
-	
+	@JsonManagedReference(value = "cart")
+	List<CartItem> cartItems = new ArrayList<CartItem>();
+
 	@Override
 	public String toString() {
 		return "Id: " + id + " Name: " + name + " Quantity: " + quantity + " Price: " + price + " Category: "

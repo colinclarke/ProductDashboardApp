@@ -16,7 +16,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -40,7 +39,6 @@ public class User {
 	private String username;
 	private String password;
 	@ManyToMany(mappedBy = "users", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
-	@JsonManagedReference
 	private Set<Role> roles = new HashSet<>();
 	private boolean enabled;
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

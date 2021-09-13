@@ -17,15 +17,16 @@ function ProductTableRow({pc, update}) {
     function handleAddToCart() {
         if (user === null) {
             history.push("/login");
+        } else {
+            FetchService.AddProductToCart(JSON.parse(user).id, pc.product.id, quantity)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                })
+                .catch(error => console.error(error));
+            setQuantity(1);
         }
-        FetchService.AddProductToCart(JSON.parse(user).id, pc.product.id, quantity)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-            })
-            .catch(error => console.error(error));
-        setQuantity(1);
     }
 
     return (
