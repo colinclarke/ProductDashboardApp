@@ -17,6 +17,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -45,7 +46,7 @@ public class Product {
 	private Category category;
 
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-	@JsonManagedReference(value = "cart")
+	@JsonIgnore
 	List<CartItem> cartItems = new ArrayList<CartItem>();
 
 	@Override
