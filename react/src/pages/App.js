@@ -9,6 +9,7 @@ import ProductFormPage from './ProductFormPage';
 import ProductListingsPage from './ProductListingsPage';
 import Login from './Login';
 import CreateNewUserPage from './CreateNewUserPage'
+import CartPage from './CartPage';
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
                 </Route>
                 <Route path = "/createNewUser">
                     <CreateNewUserPage/>
+                </Route>
+                <Route path="/cart">
+                    <CartPage/>
                 </Route>
                 <Route path="/">
                     <LandingPage/>
