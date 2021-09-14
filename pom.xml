@@ -151,6 +151,13 @@
 						<exclude>**/com/colin/SpringCrudApplication.class</exclude>
 						<exclude>**/com/colin/models/*</exclude>
 						<exclude>**/com/colin/repo/*</exclude>
+						<exclude>**/com/colin/controller/JwtAuthController.class</exclude>
+						<exclude>**/com/colin/controller/PaymentGatewayController.class</exclude>
+						<exclude>**/com/colin/service/JwtUserDetailsService.class</exclude>
+						<exclude>**/com/colin/service/StripeService.class</exclude>
+						<exclude>**/com/colin/filter/*</exclude>
+						<exclude>**/com/colin/security/*</exclude>
+						<exclude>**/com/colin/aspect/*</exclude>
 					</excludes>
 				</configuration>
 			</plugin>

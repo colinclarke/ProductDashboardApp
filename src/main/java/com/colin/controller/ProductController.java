@@ -40,10 +40,6 @@ public class ProductController {
 		return productService.getAllProducts();
 	}
 
-	@PostMapping("")
-	public List<Product> searchProducts(@RequestParam String searchKey) {
-		return productService.getSearchedProduct(searchKey);
-	}
 
 	@PostMapping("/new")
 	public ResponseEntity<ProductCategory> addNewProduct(@Valid @RequestBody ProductCategory pc) {
