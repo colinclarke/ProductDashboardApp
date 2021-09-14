@@ -3743,6 +3743,7 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 2021-09-13 16:13:07,985 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(15)-127.0.0.1] HikariPool-2 - Shutdown initiated...
 2021-09-13 16:13:07,999 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(15)-127.0.0.1] HikariPool-2 - Shutdown completed.
 =======
+>>>>>>> 98c510a0ece83c470326c21cccca58edeaaecb1a
 2021-09-13 15:26:35,916 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
 2021-09-13 15:26:35,932 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SpringCrudApplication using Java 1.8.0_281 on LP-PF2VB15G with PID 5268 (C:\MyProjects\Spring\SpringCRUD\target\classes started by colin_clarke in C:\MyProjects\Spring\SpringCRUD)
 2021-09-13 15:26:35,933 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.5.3, Spring v5.3.9
@@ -4228,6 +4229,8 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 2021-09-13 16:11:10,367 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-9] Method: List com.colin.controller.ProductController.listAllProducts()
 2021-09-13 16:11:10,386 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-9] Returns: [ProductCategory(product=Id: 4 Name: Beans Quantity: 201 Price: 1.5 Category: Canned Goods, category=Canned Goods), ProductCategory(product=Id: 5 Name: Apple Quantity: 202 Price: 0.98 Category: Fruit, category=Fruit), ProductCategory(product=Id: 6 Name: Pineapple Quantity: 812 Price: 8.99 Category: Fruit, category=Fruit), ProductCategory(product=Id: 7 Name: Bananas Quantity: 283 Price: 1.25 Category: Fruit, category=Fruit), ProductCategory(product=Id: 8 Name: Sriracha Quantity: 999 Price: 5.99 Category: Sauce, category=Sauce), ProductCategory(product=Id: 10 Name: Bananas Quantity: 762 Price: 3.8 Category: Fruit, category=Fruit), ProductCategory(product=Id: 11 Name: Mango Quantity: 355 Price: 4.56 Category: Fruit, category=Fruit)]
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 2021-09-13 16:31:46,336 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
 2021-09-13 16:31:46,356 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SpringCrudApplication using Java 15.0.2 on LP-PF2VASVX with PID 8396 (C:\Users\genevieve_zola\Documents\Practice\Phase1GroupProject\ProductDashboardApp\target\classes started by genevieve_zola in C:\Users\genevieve_zola\Documents\Practice\Phase1GroupProject\ProductDashboardApp)
 2021-09-13 16:31:46,357 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.5.3, Spring v5.3.9
@@ -4465,6 +4468,7 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 2021-09-13 16:52:19,014 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(46)-127.0.0.1] HikariPool-6 - Shutdown initiated...
 2021-09-13 16:52:19,025 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(46)-127.0.0.1] HikariPool-6 - Shutdown completed.
 =======
+>>>>>>> 98c510a0ece83c470326c21cccca58edeaaecb1a
 2021-09-13 16:33:46,273 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
 2021-09-13 16:33:46,291 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SpringCrudApplication using Java 1.8.0_281 on LP-PF2VB15G with PID 5044 (C:\MyProjects\Spring\SpringCRUD\target\classes started by colin_clarke in C:\MyProjects\Spring\SpringCRUD)
 2021-09-13 16:33:46,292 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.5.3, Spring v5.3.9
@@ -4781,6 +4785,9 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 2021-09-13 16:49:46,140 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8484-exec-1] Completed initialization in 1 ms
 2021-09-13 16:50:01,696 WARN com.colin.security.JwtRequestFilter [http-nio-8484-exec-4] JWT Token does not begin with Bearer String
 2021-09-13 16:50:01,699 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-4] Method: List com.colin.controller.ProductController.listAllProducts()
+<<<<<<< HEAD
+2021-09-13 16:50:01,720 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-4] Returns: [ProductCategory(product=Id: 4 Name: Beans Quantity: 197 Price: 1.5 Category: Canned Goods, category=Canned Goods), ProductCategory(product=Id: 5 Name: Apple Quantity: 202 Price: 0.98 Category: Fruit, category=Fruit), ProductCategory(product=Id: 6 Name: Pineapple Quantity: 812 Price: 8.99 Category: Fruit, category=Fruit), ProductCategory(product=Id: 7 Name: Bananas Quantity: 283 Price: 1.25 Category: Fruit, category=Fruit), ProductCategory(product=Id: 8 Name: Sriracha Quantity: 999 Price: 5.99 Category: Sauce, category=Sauce), ProductCategory(product=Id: 10 Name: Bananas Quantity: 762 Price: 3.8 Category: Fruit, category=Fruit), ProductCategory(product=Id: 11 Name: Mango Quantity: 355 Price: 4.56 Category: Fruit, category=Fruit)]
+=======
 2021-09-13 16:50:01,720 DEBUG com.colin.aspect.ProductControllerAspect [http-nio-8484-exec-4] Returns: [ProductCategory(product=Id: 4 Name: Beans Quantity: 197 Price: 1.5 Category: Canned Goods, category=Canned Goods), ProductCategory(product=Id: 5 Name: Apple Quantity: 202 Price: 0.98 Category: Fruit, category=Fruit), ProductCategory(product=Id: 6 Name: Pineapple Quantity: 812 Price: 8.99 Category: Fruit, category=Fruit), ProductCategory(product=Id: 7 Name: Bananas Quantity: 283 Price: 1.25 Category: Fruit, category=Fruit), ProductCategory(product=Id: 8 Name: Sriracha Quantity: 999 Price: 5.99 Category: Sauce, category=Sauce), ProductCategory(product=Id: 10 Name: Bananas Quantity: 762 Price: 3.8 Category: Fruit, category=Fruit), ProductCategory(product=Id: 11 Name: Mango Quantity: 355 Price: 4.56 Category: Fruit, category=Fruit)]2021-09-13 17:01:51,112 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
 2021-09-13 17:01:51,117 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SpringCrudApplication using Java 15.0.2 on LP-PF2VASVX with PID 24588 (C:\Users\genevieve_zola\Documents\Practice\Phase1GroupProject\ProductDashboardApp\target\classes started by genevieve_zola in C:\Users\genevieve_zola\Documents\Practice\Phase1GroupProject\ProductDashboardApp)
 2021-09-13 17:01:51,118 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.5.3, Spring v5.3.9

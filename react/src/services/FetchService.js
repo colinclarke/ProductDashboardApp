@@ -80,8 +80,19 @@ const FetchService = {
             password: password,
         });
         return fetch(process.env.REACT_APP_BASE_API_URL+'/auth/authenticate', requestOptions);
+    },
+    GetCart: (userid) => {
+        requestOptions.headers.Authorization = getJwtToken();
+        requestOptions.method = 'GET';
+        delete requestOptions.body;
+        return fetch(process.env.REACT_APP_BASE_API_URL+'/cart/'+userid, requestOptions);
+    },
+    DeleteProductFromCart: (userid, productid) => {
+        requestOptions.headers.Authorization = getJwtToken();
+        requestOptions.method = 'DELETE';
+        delete requestOptions.body;
+        return fetch(process.env.REACT_APP_BASE_API_URL+'/cart/'+userid+'/product/'+productid, requestOptions);
     }
-
 }
 
 export default FetchService;

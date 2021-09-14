@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FetchService from '../services/FetchService';
 import ProductTableRow from './ProductTableRow';
 
-function ProductTable() {
+function ProductTable(props) {
 
     const [pc, setPc] = useState([]);
 
@@ -18,7 +18,8 @@ function ProductTable() {
                 }
                 return response.json();
             })
-            .then(data => setPc(data));
+            .then(data => setPc(data))
+            .catch(error => console.error(error));
     }
 
     return (
@@ -35,7 +36,12 @@ function ProductTable() {
                 </tr>
             </thead>
             <tbody>
-                {pc.map((p, i) => <ProductTableRow key={i} pc={p} update={getProducts}/>)}
+                {pc.map((p, i) => <ProductTableRow 
+                    key={i} 
+                    pc={p} 
+                    update={getProducts} 
+                    setAlert={props.setAlert}/>
+                )}
             </tbody>
         </table>
     );

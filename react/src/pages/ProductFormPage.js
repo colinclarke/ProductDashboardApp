@@ -19,7 +19,7 @@ function ProductFormPage() {
 
     return (
         <div>
-            <Header/>
+            <Header isLoggedIn={user !== null}/>
             <br/>
             <div className='container col-md-5'>
                 <h2>{typeof pid == 'undefined' ? 'New Product' : 'Edit Product '+pid}</h2>
