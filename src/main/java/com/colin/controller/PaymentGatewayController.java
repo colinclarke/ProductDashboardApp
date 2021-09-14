@@ -43,8 +43,12 @@ public class PaymentGatewayController {
 		for (CartItem item : list) {
 			Product p = new Product();
 			p = productService.getById(item.getProduct().getId()).orElse(null);
-			p.setQuantity(p.getQuantity() - item.getQuantity());
-			productService.updateProduct(p);
+			if (p.getQuantity() - item.getQuantity() == 0) {
+				productService.deleteProduct(p.getId());
+			} else {
+				p.setQuantity(p.getQuantity() - item.getQuantity());
+				productService.updateProduct(p);
+			}
 		}
 		cartItemService.deleteByUserId(userid);
 		return charge;
