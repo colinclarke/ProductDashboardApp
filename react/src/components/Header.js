@@ -1,7 +1,7 @@
 import React from 'react';
 import cart from '../assets/cart.svg';
 
-function Header() {
+function Header({isLoggedIn}) {
     return (
         <header>
             <nav className="navbar navbar-expand-md navbar-dark" style={{backgroundColor: 'tomato'}}>
@@ -18,9 +18,15 @@ function Header() {
                 </div>
                 <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                     <ul className="navbar-nav ms-auto">
+                        { isLoggedIn ? 
                         <li className="nav-item me-3">
                             <a className="nav-link" href="/cart"><img src={cart} alt="cart logo" className="mx-3"/>Cart</a>
                         </li>
+                        :
+                        <li className="nav-item me-3">
+                            <a href="/login" className="btn btn-secondary">Login</a>
+                        </li>
+                        }
                     </ul>
                 </div>
             </nav>

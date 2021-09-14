@@ -1,33 +1,40 @@
-import React from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import Stripe from "react-stripe-checkout";
 import axios from "axios";
-import useFetch from 'react-fetch-hook';
 import {useHistory} from 'react-router-dom';
 import CartContents from '../components/CartContents';
 import Header from '../components/Header';
+import FetchService from '../services/FetchService';
 
 function CartPage() {
 
     const history = useHistory();
     const user = localStorage.getItem('user') === null ? null : JSON.parse(localStorage.getItem('user'));
-    const { isLoading, data, error } = useFetch(process.env.REACT_APP_BASE_API_URL+'/cart/'+user.id, {
-        headers: {Authorization: 'Bearer '+user.token},
-        depends: [user !== null]
-    });
+    const [cart, setCart] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
 
-    console.log(data);
+    const getCart = useCallback(async () => {
+        FetchService.GetCart(user.id)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setCart(data);
+                setTotalPrice(0);
+                for (let i in data) {
+                    let cartItem = data[i];
+                    setTotalPrice(t => t + (cartItem.product.price*cartItem.quantity));
+                }
+            })
+            .catch(error => console.error(error));
+    }, [user.id]);
 
-    if (error) {
-        history.push('/');
-    }
-
-    let totalPrice = 0;
-    if (!isLoading) {
-        for (let i in data) {
-            let cartItem = data[i];
-            totalPrice += (cartItem.product.price*cartItem.quantity);
-        }
-    }
+    useEffect(() => {
+        getCart();
+    },[getCart]);
 
     async function handleToken(token) {
         console.log(token);
@@ -48,12 +55,11 @@ function CartPage() {
 
     return (
         <div>
-            <Header/>
+            <Header isLoggedIn={user !== null}/>
             <div className="container col-md-5">
                 <h2 className="my-3">Checkout</h2>
-                {!isLoading && 
                 <div>
-                    <CartContents cart={data} totalPrice={totalPrice} />
+                    <CartContents cart={cart} totalPrice={totalPrice} getCart={getCart} />
                     <div className="d-flex justify-content-end">
                         <Stripe
                         stripeKey="pk_test_51JPKxyG8YVxXlobJkSvbwGXNpZk1I00iw4PzpdUdC5sWTiqkfOr9pmHTkFrNvhURV90F9O6o7WipZWhAPVwz2Yva00iAQt1xZ4"
@@ -61,7 +67,6 @@ function CartPage() {
                         />
                     </div>
                 </div>
-                }
             </div>
         </div>
     );
