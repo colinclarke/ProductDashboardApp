@@ -85,6 +85,7 @@ public class ProductServiceTest {
 		Product p = new Product(1, "Milk", 3, 2.99, c, new ArrayList<>());
 
 		when(productRepository.save(p)).thenReturn(p);
+		productService.updateProduct(p);
 		
 		assertNotNull(p);
 	}

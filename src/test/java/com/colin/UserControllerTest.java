@@ -79,6 +79,23 @@ ObjectMapper map;
 						.andExpect(status().isAccepted());
 	}
 	
+	@Test
+	void createNewUserFail() throws Exception {
+		
+		
+		
+		DummyUser user = new DummyUser("Percy", "pepperbox", new ArrayList<>());
+		boolean newUser = false;
+		
+		when(userDetails.createNewUser(user)).thenReturn(newUser);
+		
+		mvc.perform(post("/api/create-new-user")
+				.content(toJsonString(user))
+						.contentType(MediaType.APPLICATION_JSON)
+						.accept(MediaType.APPLICATION_JSON))
+						.andExpect(status().isConflict());
+	}
+	
 	public static String toJsonString(final Object obj) {
 		try {
 			return new ObjectMapper().writeValueAsString(obj);
