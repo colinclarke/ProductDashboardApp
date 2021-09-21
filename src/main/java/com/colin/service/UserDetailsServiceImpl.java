@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.colin.models.DummyUser;
+import com.colin.models.Role;
 import com.colin.models.User;
 import com.colin.repo.RoleRepository;
 import com.colin.repo.UserRepository;
@@ -44,13 +45,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		u2.setPassword(encryptP);
 
 		u2.setEnabled(true);
-		
+
 		if (u.getRoles().isEmpty()) {
-			u2.addRole(roleRepository.getRoleByName("ROLE_USER"));
+			Role role = roleRepository.getRoleByName("ROLE_USER");
+			if (role == null) {
+				role = roleRepository.save(new Role("ROLE_USER"));
+			}
+			u2.addRole(role);
 		}
-		
+
 		for (String s : u.getRoles()) {
-			u2.addRole(roleRepository.getRoleByName(s));
+			Role role = roleRepository.getRoleByName(s);
+			if (role == null) {
+				role = roleRepository.save(new Role(s));
+			}
+			u2.addRole(role);
 		}
 
 		userRepository.save(u2);
